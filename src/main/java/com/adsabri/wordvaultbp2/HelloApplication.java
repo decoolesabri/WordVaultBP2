@@ -25,3 +25,5 @@ public class HelloApplication extends Application {
         launch();
     }
 }
+
+// vragen of de textpane achter de loginpane zit of dat er iets anders aan de hand is
