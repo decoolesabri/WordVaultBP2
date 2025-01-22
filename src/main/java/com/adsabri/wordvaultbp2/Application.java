@@ -1,15 +1,11 @@
 package com.adsabri.wordvaultbp2;
 
 import com.adsabri.wordvaultbp2.pages.LoginPage;
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+public class Application extends javafx.application.Application {
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -25,5 +21,3 @@ public class HelloApplication extends Application {
         launch();
     }
 }
-
-// vragen of de textpane achter de loginpane zit of dat er iets anders aan de hand is

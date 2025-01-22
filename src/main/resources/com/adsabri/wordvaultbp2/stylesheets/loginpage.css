@@ -1,0 +1,12 @@
+
+#rootPane {
+    -fx-background-color: lightblue;
+}
+
+#loginPane {
+    -fx-background-color: red;
+}
+
+#textPane {
+    -fx-background-color: yellow;
+}
