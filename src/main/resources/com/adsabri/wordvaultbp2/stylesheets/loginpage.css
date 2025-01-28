@@ -4,9 +4,15 @@
 }
 
 #loginPane {
-    -fx-background-color: red;
+    -fx-background-color: white;
+    -fx-alignment: center;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
 }
 
 #textPane {
     -fx-background-color: yellow;
+    -fx-alignment: center;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
 }

@@ -1,5 +1,6 @@
 package com.adsabri.wordvaultbp2;
 
+import com.adsabri.wordvaultbp2.pages.HomePage;
 import com.adsabri.wordvaultbp2.pages.LoginPage;
 import javafx.stage.Stage;
 
@@ -10,7 +11,8 @@ public class Application extends javafx.application.Application {
     @Override
     public void start(Stage stage) throws IOException {
 
-        LoginPage loginPage = new LoginPage(stage);
+//        LoginPage loginPage = new LoginPage(stage);
+        HomePage homePage = new HomePage(stage);
 
         stage.setResizable(false);
         stage.setTitle("Hello!");
