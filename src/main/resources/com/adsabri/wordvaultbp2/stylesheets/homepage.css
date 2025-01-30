@@ -1,0 +1,19 @@
+#rootPane {
+    -fx-background-color: lightblue;
+}
+
+#topPane {
+    -fx-background-color: red;
+}
+
+#leftPane {
+    -fx-background-color: blue;
+}
+
+#rightPane {
+    -fx-background-color: yellow;
+}
+
+#bottomPane {
+    -fx-background-color: green;
+}

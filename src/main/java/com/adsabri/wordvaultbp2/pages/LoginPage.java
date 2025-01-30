@@ -55,8 +55,6 @@ public class LoginPage {
 
         appLabel = new Label("WordVault Spanish");
         sloganLabel = new Label("Your personal dictionary for mastering Spanish!");
-
-
         loginLabel = new Label("User login");
 
         textUsername = new TextField();
@@ -106,5 +104,4 @@ public class LoginPage {
 
 }
 
-// Vragen waarom ik geen label kan toevoegen
 // Vragen of elke page een eigen css sheet krijgt
