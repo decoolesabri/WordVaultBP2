@@ -104,4 +104,3 @@ public class LoginPage {
 
 }
 
-// Vragen of elke page een eigen css sheet krijgt

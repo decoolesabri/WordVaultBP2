@@ -56,18 +56,24 @@ public class HomePage {
         rightButton = new Button("Right Page");
         logoutButton = new Button("Logout");
 
-        // id's geven aan de layout panes
+        // id's geven aan de onderdelen
         root.setId("rootPane");
         topPane.setId("topPane");
         leftPane.setId("leftPane");
         rightPane.setId("rightPane");
         bottomPane.setId("bottomPane");
 
+        topLabel.setId("topPane-text");
+        leftLabel.setId("leftPane-text");
+
+        leftButton.setId("leftPane-button");
+        logoutButton.setId("bottomPane-button");
+
         // sizes
         topPane.setPrefSize(400, 100);
         leftPane.setPrefSize(300, 500);
         rightPane.setPrefSize(300, 500);
-        bottomPane.setPrefSize(100, 50);
+        bottomPane.setPrefSize(125, 75);
 
         // plaats panes
         topPane.setLayoutX(500);
