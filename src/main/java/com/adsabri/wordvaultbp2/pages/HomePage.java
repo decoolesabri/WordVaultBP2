@@ -67,6 +67,7 @@ public class HomePage {
         leftLabel.setId("leftPane-text");
 
         leftButton.setId("leftPane-button");
+        rightButton.setId("rightPane-button");
         logoutButton.setId("bottomPane-button");
 
         // sizes
