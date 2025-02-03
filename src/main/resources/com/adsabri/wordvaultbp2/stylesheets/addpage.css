@@ -1,0 +1,22 @@
+#rootPane {
+    -fx-background-color: lightblue;
+}
+
+#topPane {
+    -fx-background-color: red;
+    /*-fx-alignment: center;*/
+    /*-fx-max-width: infinity;*/
+}
+
+#middlePane {
+    -fx-background-color: blue;
+    -fx-spacing: 30px;
+}
+
+#savePane {
+    -fx-background-color: yellow;
+}
+
+#buttonPane {
+    -fx-background-color: green;
+}

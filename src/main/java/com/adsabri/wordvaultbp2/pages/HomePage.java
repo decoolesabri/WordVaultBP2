@@ -39,7 +39,7 @@ public class HomePage {
 
     }
 
-    public void setupLayout () {
+    private void setupLayout () {
 
         System.out.println("Setup Layout");
 
@@ -89,8 +89,27 @@ public class HomePage {
         bottomPane.setLayoutX(70);
         bottomPane.setLayoutY(650);
 
+        // set on action koppelen
+        setOnAction();
+
         // toevoegen elementen aan parent layout
         addChildren();
+
+    }
+
+    private void setOnAction () {
+
+        leftButton.setOnAction(event -> {
+
+        });
+
+        rightButton.setOnAction(event -> {
+
+        });
+
+        logoutButton.setOnAction(event -> {
+
+        });
 
     }
 

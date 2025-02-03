@@ -41,7 +41,7 @@ public class LoginPage {
 
     }
 
-    public void setupLayout () {
+    private void setupLayout () {
 
         System.out.println("Setup Layout");
 
@@ -86,12 +86,23 @@ public class LoginPage {
         textPane.setLayoutX(200);
         textPane.setLayoutY(100);
 
+        // set on action koppelen
+        setOnAction();
+
         // toevoegen elementen aan parent layout
         addChildren();
 
     }
 
-    private void addChildren () {
+    private void setOnAction () {
+
+        loginButton.setOnAction(event -> {
+
+        });
+
+    }
+
+    private void addChildren() {
         root.getChildren().add(backgroundImage);
         root.getChildren().add(textPane);
         root.getChildren().add(loginPane);
@@ -99,8 +110,6 @@ public class LoginPage {
         textPane.getChildren().addAll(appLabel, sloganLabel);
         loginPane.getChildren().addAll(loginLabel, textUsername, textPassword, loginButton);
     }
-
-
 
 }
 
