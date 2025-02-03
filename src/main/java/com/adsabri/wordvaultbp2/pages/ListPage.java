@@ -10,18 +10,19 @@ import javafx.stage.Stage;
 
 public class ListPage {
 
+    private Stage stage;
     private Pane root;
     private Scene scene;
     private VBox topPane;
     private VBox listPane;
     private VBox buttonPane;
     private Label label;
-    private Button backButton;
+    private Button homeButton;
     private Button addButton;
 
-    public ListPage (Stage ListPage) {
+    public ListPage (Stage stage) {
 
-        System.out.println("List Page");
+        this.stage = stage;
 
         root = new Pane();
         scene = new Scene(root, 1400, 750);
@@ -29,8 +30,8 @@ public class ListPage {
 
         setupLayout();
 
-        ListPage.setScene(scene);
-        ListPage.setTitle("List Page");
+        stage.setScene(scene);
+        stage.setTitle("List Page");
 
     }
 
@@ -45,7 +46,7 @@ public class ListPage {
 
         label = new Label("Current wordlist");
 
-        backButton = new Button("Back");
+        homeButton = new Button("Back");
         addButton = new Button("Add");
 
         // id's geven aan de onderdelen
@@ -56,7 +57,7 @@ public class ListPage {
 
         label.setId("label");
 
-        backButton.setId("backButton");
+        homeButton.setId("backButton");
         addButton.setId("addButton");
 
         // sizes
@@ -84,21 +85,26 @@ public class ListPage {
 
     private void setOnAction () {
 
-        backButton.setOnAction(e -> {
-
+        homeButton.setOnAction(e -> {
+            stage.setScene(new HomePage(stage).getScene());
         });
 
         addButton.setOnAction(e -> {
-
+            AddPage addPage = new AddPage(stage);
+            stage.setScene(addPage.getScene());
         });
 
+    }
+
+    public Scene getScene() {
+        return scene;
     }
 
     private void addChildren () {
         root.getChildren().addAll(topPane, listPane, buttonPane);
         topPane.getChildren().addAll(label);
         listPane.getChildren().addAll();
-        buttonPane.getChildren().addAll(backButton, addButton);
+        buttonPane.getChildren().addAll(homeButton, addButton);
     }
 
 }

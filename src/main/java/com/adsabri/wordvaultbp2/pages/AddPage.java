@@ -11,8 +11,9 @@ import javafx.stage.Stage;
 
 public class AddPage {
 
-    private Pane root;
+    private Stage stage;
     private Scene scene;
+    private Pane root;
     private VBox topPane;
     private VBox middlePane;
     private VBox savePane;
@@ -22,12 +23,12 @@ public class AddPage {
     private TextField meaning;
     private TextField note;
     private Button saveButton;
-    private Button backButton;
+    private Button homeButton;
     private Button listButton;
 
-    public AddPage (Stage AddPage) {
+    public AddPage (Stage stage) {
 
-        System.out.println("Add Page");
+        this.stage = stage;
 
         root = new Pane();
         scene = new Scene(root, 1400, 750);
@@ -35,8 +36,8 @@ public class AddPage {
 
         setupLayout();
 
-        AddPage.setScene(scene);
-        AddPage.setTitle("Add Page");
+        this.stage.setScene(scene);
+        this.stage.setTitle("Add Page");
 
     }
 
@@ -60,7 +61,7 @@ public class AddPage {
         note.setPromptText("Enter note or example sentence");
 
         saveButton = new Button("Save");
-        backButton = new Button("Back");
+        homeButton = new Button("Back");
         listButton = new Button("List");
 
         // id's geven aan de onderdelen
@@ -76,7 +77,7 @@ public class AddPage {
         note.setId("note");
 
         saveButton.setId("saveButton");
-        backButton.setId("backButton");
+        homeButton.setId("backButton");
         listButton.setId("listButton");
 
         // sizes
@@ -112,14 +113,20 @@ public class AddPage {
 
         });
 
-        backButton.setOnAction(e -> {
-
+        homeButton.setOnAction(e -> {
+            HomePage homePage = new HomePage(stage);
+            stage.setScene(homePage.getScene());
         });
 
         listButton.setOnAction(e -> {
-
+            ListPage listPage = new ListPage(stage);
+            stage.setScene(listPage.getScene());
         });
 
+    }
+
+    public Scene getScene() {
+        return scene;
     }
 
     private void addChildren () {
@@ -127,7 +134,7 @@ public class AddPage {
         topPane.getChildren().addAll(label);
         middlePane.getChildren().addAll(word, meaning, note);
         savePane.getChildren().addAll(saveButton);
-        buttonPane.getChildren().addAll(backButton, listButton);
+        buttonPane.getChildren().addAll(homeButton, listButton);
     }
 
 }

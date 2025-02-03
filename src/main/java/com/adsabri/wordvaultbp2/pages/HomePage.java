@@ -4,14 +4,13 @@ import com.adsabri.wordvaultbp2.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class HomePage {
 
+    private Stage homeStage;
     private Pane root;
     private Scene scene;
     private VBox topPane;
@@ -20,13 +19,13 @@ public class HomePage {
     private VBox bottomPane;
     private Label topLabel;
     private Label leftLabel;
-    private Button leftButton;
-    private Button rightButton;
+    private Button addButton;
+    private Button listButton;
     private Button logoutButton;
 
     public HomePage (Stage homeStage) {
 
-        System.out.println("Login Page");
+        this.homeStage = homeStage;
 
         root = new Pane();
         scene = new Scene(root, 1400, 750);
@@ -52,8 +51,8 @@ public class HomePage {
         topLabel = new Label("Welcome, 'Username'");
         leftLabel = new Label("A powerfull tool to create and manage your personalized wordlist, store translations and notes, and built your language skills step by step in an organized way!");
 
-        leftButton = new Button("Left Page");
-        rightButton = new Button("Right Page");
+        addButton = new Button("Left Page");
+        listButton = new Button("Right Page");
         logoutButton = new Button("Logout");
 
         // id's geven aan de onderdelen
@@ -66,8 +65,8 @@ public class HomePage {
         topLabel.setId("topPane-text");
         leftLabel.setId("leftPane-text");
 
-        leftButton.setId("leftPane-button");
-        rightButton.setId("rightPane-button");
+        addButton.setId("leftPane-button");
+        listButton.setId("rightPane-button");
         logoutButton.setId("bottomPane-button");
 
         // sizes
@@ -99,12 +98,14 @@ public class HomePage {
 
     private void setOnAction () {
 
-        leftButton.setOnAction(event -> {
-
+        addButton.setOnAction(event -> {
+            AddPage addPage = new AddPage(homeStage);
+            homeStage.setScene(addPage.getScene());
         });
 
-        rightButton.setOnAction(event -> {
-
+        listButton.setOnAction(event -> {
+            ListPage listPage = new ListPage(homeStage);
+            homeStage.setScene(listPage.getScene());
         });
 
         logoutButton.setOnAction(event -> {
@@ -113,11 +114,15 @@ public class HomePage {
 
     }
 
+    public Scene getScene() {
+        return scene;
+    }
+
     public void addChildren () {
         root.getChildren().addAll(topPane, leftPane, rightPane, bottomPane);
         topPane.getChildren().add(topLabel);
-        leftPane.getChildren().addAll(leftLabel, leftButton);
-        rightPane.getChildren().add(rightButton);
+        leftPane.getChildren().addAll(leftLabel, addButton);
+        rightPane.getChildren().add(listButton);
         bottomPane.getChildren().add(logoutButton);
 
     }
