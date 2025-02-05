@@ -37,8 +37,6 @@ public class ListPage {
 
     private void setupLayout () {
 
-        System.out.println("Setup Layout");
-
         // init's
         topPane = new VBox();
         listPane = new VBox();

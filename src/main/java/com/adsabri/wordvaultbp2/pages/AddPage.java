@@ -43,8 +43,6 @@ public class AddPage {
 
     private void setupLayout () {
 
-        System.out.println("Setup Layout");
-
         // init's
         topPane = new VBox();
         middlePane = new VBox();

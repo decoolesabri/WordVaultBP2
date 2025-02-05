@@ -1,6 +1,7 @@
 package com.adsabri.wordvaultbp2.pages;
 
 import com.adsabri.wordvaultbp2.Application;
+import com.adsabri.wordvaultbp2.controllers.LoginController;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -42,8 +43,6 @@ public class LoginPage {
     }
 
     private void setupLayout () {
-
-        System.out.println("Setup Layout");
 
         // init's
         loginPane = new VBox();
@@ -98,7 +97,37 @@ public class LoginPage {
 
         loginButton.setOnAction(event -> {
 
+            String username = textUsername.getText();
+            String password = textPassword.getText();
+
+            LoginController loginController = new LoginController();
+            boolean loginSuccess = loginController.handleLogin(username, password);
+
+            // Toon succesmelding en knop als login correct is
+            if (loginSuccess) {
+                showSuccessMessage();
+            }
+
         });
+
+    }
+
+    private void showSuccessMessage() {
+
+        Label successLabel = new Label("Login succesvol!");
+        successLabel.setStyle("-fx-text-fill: green; -fx-font-size: 16px;");
+
+        Button continueButton = new Button("Doorgaan");
+        continueButton.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white;");
+
+        continueButton.setOnAction(e -> {
+            Stage stage = (Stage) loginButton.getScene().getWindow();
+            HomePage homePage = new HomePage(stage);
+            stage.setScene(homePage.getScene());
+        });
+
+        // Voeg de melding en knop toe aan de loginPane
+        loginPane.getChildren().addAll(successLabel, continueButton);
 
     }
 
