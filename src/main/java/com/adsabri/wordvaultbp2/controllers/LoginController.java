@@ -2,7 +2,7 @@ package com.adsabri.wordvaultbp2.controllers;
 
 public class LoginController {
 
-    public boolean handleLogin(String username, String password) {
+    public boolean handleLogin (String username, String password) {
 
         // Voorlopig alleen een simpele controle (hier kan later echte validatie komen)
         if (!username.isEmpty() && !password.isEmpty()) {

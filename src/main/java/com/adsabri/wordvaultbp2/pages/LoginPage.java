@@ -115,10 +115,10 @@ public class LoginPage {
     private void showSuccessMessage() {
 
         Label successLabel = new Label("Login succesvol!");
-        successLabel.setStyle("-fx-text-fill: green; -fx-font-size: 16px;");
+        successLabel.setId("successLabel");
 
         Button continueButton = new Button("Doorgaan");
-        continueButton.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white;");
+        continueButton.setId("continueButton");
 
         continueButton.setOnAction(e -> {
             Stage stage = (Stage) loginButton.getScene().getWindow();

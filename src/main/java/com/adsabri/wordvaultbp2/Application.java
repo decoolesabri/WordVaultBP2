@@ -30,3 +30,5 @@ public class Application extends javafx.application.Application {
 
 // Stylesheet advies verwerken
 // Vragen of anderen 1 hardcoded user hebben of meerdere kunnen opslaan in database
+// Namen van de onderdelen goed maken, engels/nederlands
+// Comments toevoegen

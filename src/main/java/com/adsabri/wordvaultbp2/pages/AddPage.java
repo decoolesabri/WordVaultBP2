@@ -1,6 +1,7 @@
 package com.adsabri.wordvaultbp2.pages;
 
 import com.adsabri.wordvaultbp2.Application;
+import com.adsabri.wordvaultbp2.controllers.CreateController;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -19,9 +20,9 @@ public class AddPage {
     private VBox savePane;
     private VBox buttonPane;
     private Label label;
-    private TextField word;
-    private TextField meaning;
-    private TextField note;
+    private TextField textWord;
+    private TextField textMeaning;
+    private TextField textNote;
     private Button saveButton;
     private Button homeButton;
     private Button listButton;
@@ -51,12 +52,12 @@ public class AddPage {
 
         label = new Label("Add your new learned word here!");
 
-        word = new TextField();
-        meaning = new TextField();
-        note = new TextField();
-        word.setPromptText("Enter Spanish word");
-        meaning.setPromptText("Enter translation");
-        note.setPromptText("Enter note or example sentence");
+        textWord = new TextField();
+        textMeaning = new TextField();
+        textNote = new TextField();
+        textWord.setPromptText("Enter Spanish word");
+        textMeaning.setPromptText("Enter translation");
+        textNote.setPromptText("Enter note or example sentence");
 
         saveButton = new Button("Save");
         homeButton = new Button("Back");
@@ -70,9 +71,9 @@ public class AddPage {
         buttonPane.setId("buttonPane");
 
         label.setId("label");
-        word.setId("word");
-        meaning.setId("meaning");
-        note.setId("note");
+        textWord.setId("word");
+        textMeaning.setId("meaning");
+        textNote.setId("note");
 
         saveButton.setId("saveButton");
         homeButton.setId("backButton");
@@ -109,6 +110,17 @@ public class AddPage {
 
         saveButton.setOnAction(e -> {
 
+            String word = textWord.getText();
+            String meaning = textMeaning.getText();
+            String note = textNote.getText();
+
+            CreateController createController = new CreateController();
+            boolean createSuccess = createController.handleCreate(word, meaning, note);
+
+            if (createSuccess) {
+                showSuccessMessage();
+            }
+
         });
 
         homeButton.setOnAction(e -> {
@@ -123,6 +135,18 @@ public class AddPage {
 
     }
 
+    private void showSuccessMessage() {
+
+        Label successLabel = new Label("Opslaan succesvol!");
+        successLabel.setId("successLabel");
+
+        // Voeg de melding en knop toe aan de loginPane
+        middlePane.getChildren().addAll(successLabel);
+
+        // Kijken of dit werkt
+
+    }
+
     public Scene getScene() {
         return scene;
     }
@@ -130,7 +154,7 @@ public class AddPage {
     private void addChildren () {
         root.getChildren().addAll(topPane, middlePane, savePane, buttonPane);
         topPane.getChildren().addAll(label);
-        middlePane.getChildren().addAll(word, meaning, note);
+        middlePane.getChildren().addAll(textWord, textMeaning, textNote);
         savePane.getChildren().addAll(saveButton);
         buttonPane.getChildren().addAll(homeButton, listButton);
     }
