@@ -19,6 +19,8 @@ public class ListPage {
     private Label label;
     private Button homeButton;
     private Button addButton;
+    private Button editButton;
+    private Button deleteButton;
 
     public ListPage (Stage stage) {
 
@@ -47,6 +49,9 @@ public class ListPage {
         homeButton = new Button("Back");
         addButton = new Button("Add");
 
+        editButton = new Button("Edit");
+        deleteButton = new Button("Delete");
+
         // id's geven aan de onderdelen
         root.setId("rootPane");
         topPane.setId("topPane");
@@ -57,6 +62,9 @@ public class ListPage {
 
         homeButton.setId("backButton");
         addButton.setId("addButton");
+
+        editButton.setId("editButton");
+        deleteButton.setId("deleteButton");
 
         // sizes
         topPane.setPrefSize(500, 100);
@@ -90,6 +98,14 @@ public class ListPage {
         addButton.setOnAction(e -> {
             AddPage addPage = new AddPage(stage);
             stage.setScene(addPage.getScene());
+        });
+
+        editButton.setOnAction(e -> {
+
+        });
+
+        deleteButton.setOnAction(e -> {
+
         });
 
     }
