@@ -1,9 +1,13 @@
 package com.adsabri.wordvaultbp2.pages;
 
 import com.adsabri.wordvaultbp2.Application;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -17,6 +21,8 @@ public class HomePage {
     private VBox leftPane;
     private VBox rightPane;
     private VBox bottomPane;
+    private Image hBackground;
+    private ImageView backgroundImage;
     private Label topLabel;
     private Label leftLabel;
     private Button addButton;
@@ -46,6 +52,15 @@ public class HomePage {
         rightPane = new VBox();
         bottomPane = new VBox();
 
+        hBackground = new Image(Application.class.getResource("images/h-background.jpg").toString());
+        backgroundImage = new ImageView();
+        backgroundImage.setImage(hBackground);
+
+        backgroundImage.setFitWidth(1400);
+        backgroundImage.setFitHeight(750);
+
+        backgroundImage.setPreserveRatio(false);
+
         topLabel = new Label("Welcome, 'Username'");
         leftLabel = new Label("A powerfull tool to create and manage your personalized wordlist, store translations and notes, and built your language skills step by step in an organized way!");
 
@@ -60,15 +75,15 @@ public class HomePage {
         rightPane.setId("rightPane");
         bottomPane.setId("bottomPane");
 
-        topLabel.setId("topPane-text");
-        leftLabel.setId("leftPane-text");
+        topLabel.setId("topLabel");
+        leftLabel.setId("leftLabel");
 
-        addButton.setId("leftPane-button");
-        listButton.setId("rightPane-button");
-        logoutButton.setId("bottomPane-button");
+        addButton.setId("leftButton");
+        listButton.setId("rightButton");
+        logoutButton.setId("bottomButton");
 
         // sizes
-        topPane.setPrefSize(400, 100);
+        topPane.setPrefSize(430, 100);
         leftPane.setPrefSize(300, 500);
         rightPane.setPrefSize(300, 500);
         bottomPane.setPrefSize(125, 75);
@@ -85,6 +100,10 @@ public class HomePage {
 
         bottomPane.setLayoutX(70);
         bottomPane.setLayoutY(650);
+
+        leftPane.setSpacing(20);
+        leftPane.setPadding(new Insets(15));
+        leftPane.setAlignment(Pos.CENTER);
 
         // set on action koppelen
         setOnAction();
@@ -117,6 +136,8 @@ public class HomePage {
     }
 
     public void addChildren () {
+
+        root.getChildren().add(backgroundImage);
         root.getChildren().addAll(topPane, leftPane, rightPane, bottomPane);
         topPane.getChildren().add(topLabel);
         leftPane.getChildren().addAll(leftLabel, addButton);

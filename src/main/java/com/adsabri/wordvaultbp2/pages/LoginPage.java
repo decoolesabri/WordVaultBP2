@@ -2,6 +2,9 @@ package com.adsabri.wordvaultbp2.pages;
 
 import com.adsabri.wordvaultbp2.Application;
 import com.adsabri.wordvaultbp2.controllers.LoginController;
+import javafx.animation.FadeTransition;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -12,6 +15,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class LoginPage {
 
@@ -19,6 +23,7 @@ public class LoginPage {
     private Scene scene;
     private VBox textPane;
     private VBox loginPane;
+    private Image lBackground;
     private ImageView backgroundImage;
     private Label loginLabel;
     private Label appLabel;
@@ -48,7 +53,7 @@ public class LoginPage {
         loginPane = new VBox();
         textPane = new VBox();
 
-        Image lBackground = new Image(Application.class.getResource("images/l-background.jpg").toString());
+        lBackground = new Image(Application.class.getResource("images/l-background.jpg").toString());
         backgroundImage = new ImageView();
         backgroundImage.setImage(lBackground);
 
@@ -64,14 +69,28 @@ public class LoginPage {
 
         loginButton = new Button("Login");
 
-        // id's geven aan de layout panes
+        FadeTransition fade = new FadeTransition(Duration.seconds(1), loginPane);
+        fade.setFromValue(0);
+        fade.setToValue(1);
+        fade.play();
+
+        // id's geven aan de onderdelen
         root.setId("rootPane");
         loginPane.setId("loginPane");
         textPane.setId("textPane");
 
+        appLabel.setId("appLabel");
+        sloganLabel.setId("sloganLabel");
+        loginLabel.setId("loginLabel");
+
+        textUsername.setId("textUsername");
+        textPassword.setId("textPassword");
+
+        loginButton.setId("loginButton");
+
         // sizes
         loginPane.setPrefSize(400, 470);
-        textPane.setPrefSize(370, 200);
+        textPane.setPrefSize(510, 200);
 
         backgroundImage.setFitWidth(1400);
         backgroundImage.setFitHeight(750);
@@ -84,6 +103,16 @@ public class LoginPage {
         loginPane.setLayoutY(150);
         textPane.setLayoutX(200);
         textPane.setLayoutY(100);
+
+        // Login Pane instellingen
+        loginPane.setSpacing(30);
+        loginPane.setPadding(new Insets(20));
+        loginPane.setAlignment(Pos.CENTER);
+
+        // Text Pane instellingen
+        textPane.setSpacing(10);
+        textPane.setPadding(new Insets(15));
+        textPane.setAlignment(Pos.CENTER);
 
         // set on action koppelen
         setOnAction();

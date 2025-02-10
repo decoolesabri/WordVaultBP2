@@ -1,27 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Agu+Display&display=swap');
+
+/*Panes*/
 #rootPane {
-    -fx-background-color: lightblue;
+}
+
+#textPane {
+    -fx-background-color: rgba(255, 215, 0, 0.7);
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-padding: 20px;
 }
 
 #loginPane {
     -fx-background-color: white;
-    -fx-alignment: center;
     -fx-border-radius: 20px;
     -fx-background-radius: 20px;
+    -fx-padding: 20px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 15, 0.5, 5, 10);
 }
 
-#textPane {
-    -fx-background-color: yellow;
+/*Labels*/
+#appLabel {
+    -fx-font-size: 40px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Agu Display", serif;
+    -fx-text-fill: black;
+    -fx-padding: 10px;
     -fx-alignment: center;
-    -fx-border-radius: 20px;
-    -fx-background-radius: 20px;
+}
+
+#sloganLabel {
+    -fx-font-size: 22px;
+    -fx-font-style: italic;
+    -fx-text-fill: black;
+    -fx-padding: 5px;
+    -fx-alignment: center;
+}
+
+#loginLabel {
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333;
+    -fx-padding: 10px 0;
 }
 
 #successLabel {
     -fx-text-fill: green;
+    -fx-font-size: 20px;
+}
+
+/*Buttons*/
+#loginButton {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
     -fx-font-size: 16px;
+    -fx-padding: 10px 20px;
+    -fx-background-radius: 10px;
+}
+
+#loginButton:hover {
+    -fx-background-color: #45a049;
 }
 
 #continueButton {
     -fx-background-color: #4CAF50;
     -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-padding: 10px 20px;
+    -fx-background-radius: 10px;
 }
+
+#continueButton:hover {
+    -fx-background-color: #45a049;
+}
+
+/*Tekstvelden*/
+#textUsername, #textPassword {
+    -fx-font-size: 14px;
+    -fx-pref-height: 35px;
+    -fx-background-radius: 10px;
+    -fx-border-width: 1px;
+    -fx-padding: 5px;
+}
+
