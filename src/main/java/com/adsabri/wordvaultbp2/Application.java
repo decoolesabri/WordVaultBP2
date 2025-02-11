@@ -14,8 +14,8 @@ public class Application extends javafx.application.Application {
     public void start(Stage stage) throws IOException {
 
 //        LoginPage loginPage = new LoginPage(stage);
-        HomePage homePage = new HomePage(stage);
-//        AddPage addPage = new AddPage(stage);
+//        HomePage homePage = new HomePage(stage);
+        AddPage addPage = new AddPage(stage);
 //        ListPage listPage = new ListPage(stage);
 
         stage.setResizable(false);

@@ -1,22 +1,73 @@
+/*Panes*/
 #rootPane {
     -fx-background-color: lightblue;
 }
 
 #topPane {
-    -fx-background-color: red;
-    /*-fx-alignment: center;*/
-    /*-fx-max-width: infinity;*/
+    -fx-background-color: rgba(157, 255, 79, 0.7);
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-padding: 20px;
 }
 
 #middlePane {
-    -fx-background-color: blue;
+    -fx-background-color: white;
+    -fx-alignment: center;
+    -fx-max-width: infinity;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-padding: 20px;
     -fx-spacing: 30px;
+    /*-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 15, 0.5, 5, 10);*/
 }
 
 #savePane {
-    -fx-background-color: yellow;
+    -fx-background-color: transparant;
 }
 
 #buttonPane {
     -fx-background-color: green;
+}
+
+/*Labels*/
+#label {
+    -fx-font-size: 31px;
+    -fx-text-fill: black;
+}
+
+/*Buttons*/
+#leftButton {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-padding: 10px 20px;
+    -fx-background-radius: 10px;
+}
+
+#leftButton:hover {
+    -fx-background-color: #45a049;
+}
+
+#rightButton {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-padding: 10px 20px;
+    -fx-background-radius: 10px;
+}
+
+#rightButton:hover {
+    -fx-background-color: #45a049;
+}
+
+#bottomButton {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-padding: 10px 20px;
+    -fx-background-radius: 10px;
+}
+
+#bottomButton:hover {
+    -fx-background-color: #45a049;
 }

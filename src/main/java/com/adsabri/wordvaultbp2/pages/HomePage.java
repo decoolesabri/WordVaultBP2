@@ -64,8 +64,8 @@ public class HomePage {
         topLabel = new Label("Welcome, 'Username'");
         leftLabel = new Label("A powerfull tool to create and manage your personalized wordlist, store translations and notes, and built your language skills step by step in an organized way!");
 
-        addButton = new Button("Left Page");
-        listButton = new Button("Right Page");
+        addButton = new Button("Add word!");
+        listButton = new Button("View word list");
         logoutButton = new Button("Logout");
 
         // id's geven aan de onderdelen
@@ -85,7 +85,7 @@ public class HomePage {
         // sizes
         topPane.setPrefSize(430, 100);
         leftPane.setPrefSize(300, 500);
-        rightPane.setPrefSize(300, 500);
+        rightPane.setPrefSize(600, 500);
         bottomPane.setPrefSize(125, 75);
 
         // plaats panes
@@ -95,7 +95,7 @@ public class HomePage {
         leftPane.setLayoutX(70);
         leftPane.setLayoutY(100);
 
-        rightPane.setLayoutX(1000);
+        rightPane.setLayoutX(750);
         rightPane.setLayoutY(200);
 
         bottomPane.setLayoutX(70);
@@ -116,8 +116,12 @@ public class HomePage {
     private void setOnAction () {
 
         addButton.setOnAction(event -> {
-            AddPage addPage = new AddPage(homeStage);
-            homeStage.setScene(addPage.getScene());
+            Stage addStage = new Stage();
+            new AddPage(addStage);
+            addStage.show();
+
+//            AddPage addPage = new AddPage(homeStage);
+//            homeStage.setScene(addPage.getScene());
         });
 
         listButton.setOnAction(event -> {

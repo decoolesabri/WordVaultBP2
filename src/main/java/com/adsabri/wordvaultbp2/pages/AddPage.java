@@ -5,6 +5,7 @@ import com.adsabri.wordvaultbp2.controllers.CreateController;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -22,7 +23,7 @@ public class AddPage {
     private Label label;
     private TextField textWord;
     private TextField textMeaning;
-    private TextField textNote;
+    private TextArea textNote;
     private Button saveButton;
     private Button homeButton;
     private Button listButton;
@@ -32,7 +33,7 @@ public class AddPage {
         this.stage = stage;
 
         root = new Pane();
-        scene = new Scene(root, 1400, 750);
+        scene = new Scene(root, 600, 700);
         scene.getStylesheets().add(Application.class.getResource("stylesheets/addpage.css").toString());
 
         setupLayout();
@@ -54,10 +55,11 @@ public class AddPage {
 
         textWord = new TextField();
         textMeaning = new TextField();
-        textNote = new TextField();
+        textNote = new TextArea();
         textWord.setPromptText("Enter Spanish word");
         textMeaning.setPromptText("Enter translation");
         textNote.setPromptText("Enter note or example sentence");
+        textNote.setPrefHeight(100);
 
         saveButton = new Button("Save");
         homeButton = new Button("Back");
@@ -80,23 +82,23 @@ public class AddPage {
         listButton.setId("listButton");
 
         // sizes
-        topPane.setPrefSize(500, 100);
-        middlePane.setPrefSize(600, 300);
-        savePane.setPrefSize(100, 100);
-        buttonPane.setPrefSize(1400, 50);
+        topPane.setPrefSize(500, 10);
+        middlePane.setPrefSize(500, 300);
+        savePane.setPrefSize(60, 60);
+        buttonPane.setPrefSize(600, 20);
 
         // plaats panes
-        topPane.setLayoutX(450);
-        topPane.setLayoutY(40);
+        topPane.setLayoutX(45);
+        topPane.setLayoutY(20);
 
-        middlePane.setLayoutX(400);
+        middlePane.setLayoutX(46);
         middlePane.setLayoutY(200);
 
-        savePane.setLayoutX(650);
-        savePane.setLayoutY(500);
+        savePane.setLayoutX(275);
+        savePane.setLayoutY(530);
 
         buttonPane.setLayoutX(0);
-        buttonPane.setLayoutY(650);
+        buttonPane.setLayoutY(600);
 
         // set on action koppelen
         setOnAction();
