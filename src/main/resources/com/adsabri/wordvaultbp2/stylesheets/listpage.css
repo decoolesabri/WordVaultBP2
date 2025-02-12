@@ -1,11 +1,14 @@
+/*Panes*/
 #rootPane {
     -fx-background-color: lightblue;
 }
 
 #topPane {
-    -fx-background-color: red;
-    /*-fx-alignment: center;*/
-    /*-fx-max-width: infinity;*/
+    -fx-background-color: rgba(157, 255, 79, 0.7);
+    -fx-alignment: center;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-padding: 20px;
 }
 
 #listPane {
@@ -14,5 +17,39 @@
 }
 
 #buttonPane {
-    -fx-background-color: green;
+    -fx-background-color: transparant;
+    -fx-alignment: center;
+    -fx-max-width: infinity;
+    -fx-max-height: infinity;
+}
+
+/*Labels*/
+#label {
+    -fx-font-size: 31px;
+    -fx-text-fill: black;
+}
+
+/*Buttons*/
+#homeButton {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-padding: 10px 20px;
+    -fx-background-radius: 10px;
+}
+
+#homeButton:hover {
+    -fx-background-color: #45a049;
+}
+
+#addButton {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-padding: 10px 20px;
+    -fx-background-radius: 10px;
+}
+
+#addButton:hover {
+    -fx-background-color: #45a049;
 }

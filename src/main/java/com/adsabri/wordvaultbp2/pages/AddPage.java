@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -19,7 +20,7 @@ public class AddPage {
     private VBox topPane;
     private VBox middlePane;
     private VBox savePane;
-    private VBox buttonPane;
+    private HBox buttonPane;
     private Label label;
     private TextField textWord;
     private TextField textMeaning;
@@ -40,6 +41,7 @@ public class AddPage {
 
         this.stage.setScene(scene);
         this.stage.setTitle("Add Page");
+        this.stage.setResizable(false);
 
     }
 
@@ -49,7 +51,8 @@ public class AddPage {
         topPane = new VBox();
         middlePane = new VBox();
         savePane = new VBox();
-        buttonPane = new VBox();
+        buttonPane = new HBox();
+        buttonPane.setSpacing(350);
 
         label = new Label("Add your new learned word here!");
 
@@ -84,8 +87,8 @@ public class AddPage {
         // sizes
         topPane.setPrefSize(500, 10);
         middlePane.setPrefSize(500, 300);
-        savePane.setPrefSize(60, 60);
-        buttonPane.setPrefSize(600, 20);
+        savePane.setPrefSize(100, 60);
+        buttonPane.setPrefSize(600, 50);
 
         // plaats panes
         topPane.setLayoutX(45);
@@ -94,7 +97,7 @@ public class AddPage {
         middlePane.setLayoutX(46);
         middlePane.setLayoutY(200);
 
-        savePane.setLayoutX(275);
+        savePane.setLayoutX(267);
         savePane.setLayoutY(530);
 
         buttonPane.setLayoutX(0);

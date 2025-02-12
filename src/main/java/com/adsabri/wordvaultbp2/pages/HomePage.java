@@ -130,7 +130,8 @@ public class HomePage {
         });
 
         logoutButton.setOnAction(event -> {
-
+            LoginPage loginPage = new LoginPage(homeStage);
+            homeStage.setScene(loginPage.getScene());
         });
 
     }

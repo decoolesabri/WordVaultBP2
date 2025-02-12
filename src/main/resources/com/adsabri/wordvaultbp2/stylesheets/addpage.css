@@ -26,7 +26,8 @@
 }
 
 #buttonPane {
-    -fx-background-color: green;
+    -fx-background-color: transparant;
+    -fx-alignment: center;
 }
 
 /*Labels*/
@@ -36,7 +37,7 @@
 }
 
 /*Buttons*/
-#leftButton {
+#saveButton {
     -fx-background-color: #4CAF50;
     -fx-text-fill: white;
     -fx-font-size: 16px;
@@ -44,11 +45,11 @@
     -fx-background-radius: 10px;
 }
 
-#leftButton:hover {
+#saveButton:hover {
     -fx-background-color: #45a049;
 }
 
-#rightButton {
+#backButton {
     -fx-background-color: #4CAF50;
     -fx-text-fill: white;
     -fx-font-size: 16px;
@@ -56,11 +57,11 @@
     -fx-background-radius: 10px;
 }
 
-#rightButton:hover {
+#backButton:hover {
     -fx-background-color: #45a049;
 }
 
-#bottomButton {
+#listButton {
     -fx-background-color: #4CAF50;
     -fx-text-fill: white;
     -fx-font-size: 16px;
@@ -68,6 +69,6 @@
     -fx-background-radius: 10px;
 }
 
-#bottomButton:hover {
+#listButton:hover {
     -fx-background-color: #45a049;
 }

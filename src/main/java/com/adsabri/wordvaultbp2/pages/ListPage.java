@@ -4,6 +4,7 @@ import com.adsabri.wordvaultbp2.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -15,7 +16,7 @@ public class ListPage {
     private Scene scene;
     private VBox topPane;
     private VBox listPane;
-    private VBox buttonPane;
+    private HBox buttonPane;
     private Label label;
     private Button homeButton;
     private Button addButton;
@@ -42,7 +43,7 @@ public class ListPage {
         // init's
         topPane = new VBox();
         listPane = new VBox();
-        buttonPane = new VBox();
+        buttonPane = new HBox();
 
         label = new Label("Current wordlist");
 
@@ -57,22 +58,23 @@ public class ListPage {
         topPane.setId("topPane");
         listPane.setId("listPane");
         buttonPane.setId("buttonPane");
+        buttonPane.setSpacing(1000);
 
         label.setId("label");
 
-        homeButton.setId("backButton");
+        homeButton.setId("homeButton");
         addButton.setId("addButton");
 
         editButton.setId("editButton");
         deleteButton.setId("deleteButton");
 
         // sizes
-        topPane.setPrefSize(500, 100);
+        topPane.setPrefSize(300, 100);
         listPane.setPrefSize(850, 425);
         buttonPane.setPrefSize(1400, 50);
 
         // plaats panes
-        topPane.setLayoutX(450);
+        topPane.setLayoutX(550);
         topPane.setLayoutY(40);
 
         listPane.setLayoutX(275);
@@ -96,8 +98,9 @@ public class ListPage {
         });
 
         addButton.setOnAction(e -> {
-            AddPage addPage = new AddPage(stage);
-            stage.setScene(addPage.getScene());
+            Stage addStage = new Stage();
+            new AddPage(addStage);
+            addStage.show();
         });
 
         editButton.setOnAction(e -> {

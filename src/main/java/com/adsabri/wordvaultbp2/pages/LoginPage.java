@@ -8,6 +8,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -28,8 +29,9 @@ public class LoginPage {
     private Label loginLabel;
     private Label appLabel;
     private Label sloganLabel;
+    private Label errorLabel;
     private TextField textUsername;
-    private TextField textPassword;
+    private PasswordField textPassword;
     private Button loginButton;
 
     public LoginPage (Stage loginStage) {
@@ -60,11 +62,13 @@ public class LoginPage {
         appLabel = new Label("WordVault Spanish");
         sloganLabel = new Label("Your personal dictionary for mastering Spanish!");
         loginLabel = new Label("User login");
+        errorLabel = new Label("Vul beide velden in.");
+        errorLabel.setVisible(false);
 
         textUsername = new TextField();
         textUsername.setPromptText("Username");
 
-        textPassword = new TextField();
+        textPassword = new PasswordField();
         textPassword.setPromptText("Password");
 
         loginButton = new Button("Login");
@@ -82,6 +86,7 @@ public class LoginPage {
         appLabel.setId("appLabel");
         sloganLabel.setId("sloganLabel");
         loginLabel.setId("loginLabel");
+        errorLabel.setId("errorLabel");
 
         textUsername.setId("textUsername");
         textPassword.setId("textPassword");
@@ -134,7 +139,10 @@ public class LoginPage {
 
             // Toon succesmelding en knop als login correct is
             if (loginSuccess) {
+                errorLabel.setVisible(false);
                 showSuccessMessage();
+            } else {
+                errorLabel.setVisible(true);
             }
 
         });
@@ -160,13 +168,17 @@ public class LoginPage {
 
     }
 
+    public Scene getScene() {
+        return scene;
+    }
+
     private void addChildren() {
         root.getChildren().add(backgroundImage);
         root.getChildren().add(textPane);
         root.getChildren().add(loginPane);
 
         textPane.getChildren().addAll(appLabel, sloganLabel);
-        loginPane.getChildren().addAll(loginLabel, textUsername, textPassword, loginButton);
+        loginPane.getChildren().addAll(loginLabel, textUsername, textPassword, loginButton, errorLabel);
     }
 
 }
