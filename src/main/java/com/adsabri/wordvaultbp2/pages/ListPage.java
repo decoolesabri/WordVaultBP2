@@ -1,6 +1,8 @@
 package com.adsabri.wordvaultbp2.pages;
 
 import com.adsabri.wordvaultbp2.Application;
+import com.adsabri.wordvaultbp2.Database;
+import com.adsabri.wordvaultbp2.controllers.CreateController;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -99,7 +101,9 @@ public class ListPage {
 
         addButton.setOnAction(e -> {
             Stage addStage = new Stage();
-            new AddPage(addStage);
+            Database db = new Database();
+            CreateController cc = new CreateController(db);
+            new AddPage(addStage, cc);
             addStage.show();
         });
 

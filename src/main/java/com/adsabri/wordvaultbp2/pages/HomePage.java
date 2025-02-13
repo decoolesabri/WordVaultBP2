@@ -1,6 +1,8 @@
 package com.adsabri.wordvaultbp2.pages;
 
 import com.adsabri.wordvaultbp2.Application;
+import com.adsabri.wordvaultbp2.Database;
+import com.adsabri.wordvaultbp2.controllers.CreateController;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -117,7 +119,9 @@ public class HomePage {
 
         addButton.setOnAction(event -> {
             Stage addStage = new Stage();
-            new AddPage(addStage);
+            Database db = new Database();
+            CreateController cc = new CreateController(db);
+            new AddPage(addStage, cc);
             addStage.show();
 
 //            AddPage addPage = new AddPage(homeStage);

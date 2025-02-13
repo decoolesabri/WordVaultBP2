@@ -16,6 +16,7 @@ public class AddPage {
 
     private Stage stage;
     private Scene scene;
+    private CreateController cc;
     private Pane root;
     private VBox topPane;
     private VBox middlePane;
@@ -29,9 +30,10 @@ public class AddPage {
     private Button homeButton;
     private Button listButton;
 
-    public AddPage (Stage stage) {
+    public AddPage (Stage stage, CreateController cc) {
 
         this.stage = stage;
+        this.cc = cc;
 
         root = new Pane();
         scene = new Scene(root, 600, 700);
@@ -119,12 +121,15 @@ public class AddPage {
             String meaning = textMeaning.getText();
             String note = textNote.getText();
 
-            CreateController createController = new CreateController();
-            boolean createSuccess = createController.handleCreate(word, meaning, note);
 
-            if (createSuccess) {
-                showSuccessMessage();
-            }
+            cc.opslaan(word, meaning, note);
+
+//            CreateController createController = new CreateController();
+//            boolean createSuccess = createController.handleCreate(word, meaning, note);
+
+//            if (createSuccess) {
+//                showSuccessMessage();
+//            }
 
         });
 

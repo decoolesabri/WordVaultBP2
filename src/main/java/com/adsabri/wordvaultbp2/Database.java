@@ -16,10 +16,11 @@ public class Database {
 
         //Verbinding met de database
         try {
-            DriverManager.getConnection("jdbc:mysql://localhost/wordvaultspanish", "root", "");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost/wordvaultspanish", "root", "");
             System.out.println("Connected to database");
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println("Kan geen verbinding maken met de database");
+//            throw new RuntimeException(e);
         }
 
     }
