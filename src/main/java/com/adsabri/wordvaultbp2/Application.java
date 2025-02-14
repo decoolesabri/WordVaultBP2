@@ -19,8 +19,8 @@ public class Application extends javafx.application.Application {
 
 //        LoginPage loginPage = new LoginPage(stage);
 //        HomePage homePage = new HomePage(stage);
-        AddPage addPage = new AddPage(stage, cc);
-//        ListPage listPage = new ListPage(stage);
+//        AddPage addPage = new AddPage(stage, cc);
+        ListPage listPage = new ListPage(stage);
 
         stage.setResizable(false);
         stage.setTitle("Hello!");
@@ -35,3 +35,6 @@ public class Application extends javafx.application.Application {
 // Stylesheet advies verwerken
 // Namen van de onderdelen goed maken, engels/nederlands
 // Comments toevoegen
+// test van controllers maken
+
+//Tableview gebruiken van Robbie

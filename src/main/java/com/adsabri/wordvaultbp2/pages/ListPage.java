@@ -3,19 +3,23 @@ package com.adsabri.wordvaultbp2.pages;
 import com.adsabri.wordvaultbp2.Application;
 import com.adsabri.wordvaultbp2.Database;
 import com.adsabri.wordvaultbp2.controllers.CreateController;
+import com.adsabri.wordvaultbp2.controllers.ShowController;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import com.adsabri.wordvaultbp2.models.Word;
 
 public class ListPage {
 
     private Stage stage;
     private Pane root;
     private Scene scene;
+    private TableView<Word> tableView;
     private VBox topPane;
     private VBox listPane;
     private HBox buttonPane;
@@ -54,6 +58,14 @@ public class ListPage {
 
         editButton = new Button("Edit");
         deleteButton = new Button("Delete");
+
+        // TableView init
+        tableView = new TableView<>();
+        tableView.setPrefSize(850, 425);
+
+        Database db = new Database();
+        ShowController sc = new ShowController(db);
+        sc.show(tableView);
 
         // id's geven aan de onderdelen
         root.setId("rootPane");
@@ -124,7 +136,7 @@ public class ListPage {
     private void addChildren () {
         root.getChildren().addAll(topPane, listPane, buttonPane);
         topPane.getChildren().addAll(label);
-        listPane.getChildren().addAll();
+        listPane.getChildren().addAll(tableView);
         buttonPane.getChildren().addAll(homeButton, addButton);
     }
 

@@ -121,15 +121,7 @@ public class AddPage {
             String meaning = textMeaning.getText();
             String note = textNote.getText();
 
-
-            cc.opslaan(word, meaning, note);
-
-//            CreateController createController = new CreateController();
-//            boolean createSuccess = createController.handleCreate(word, meaning, note);
-
-//            if (createSuccess) {
-//                showSuccessMessage();
-//            }
+            cc.save(word, meaning, note);
 
         });
 
