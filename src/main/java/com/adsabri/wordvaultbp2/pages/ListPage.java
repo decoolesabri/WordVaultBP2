@@ -4,6 +4,7 @@ import com.adsabri.wordvaultbp2.Application;
 import com.adsabri.wordvaultbp2.Database;
 import com.adsabri.wordvaultbp2.controllers.CreateController;
 import com.adsabri.wordvaultbp2.controllers.ShowController;
+import com.adsabri.wordvaultbp2.controllers.UpdateController;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -26,8 +27,6 @@ public class ListPage {
     private Label label;
     private Button homeButton;
     private Button addButton;
-    private Button editButton;
-    private Button deleteButton;
 
     public ListPage (Stage stage) {
 
@@ -56,9 +55,6 @@ public class ListPage {
         homeButton = new Button("Back");
         addButton = new Button("Add");
 
-        editButton = new Button("Edit");
-        deleteButton = new Button("Delete");
-
         // TableView init
         tableView = new TableView<>();
         tableView.setPrefSize(850, 425);
@@ -78,9 +74,6 @@ public class ListPage {
 
         homeButton.setId("homeButton");
         addButton.setId("addButton");
-
-        editButton.setId("editButton");
-        deleteButton.setId("deleteButton");
 
         // sizes
         topPane.setPrefSize(300, 100);
@@ -112,18 +105,14 @@ public class ListPage {
         });
 
         addButton.setOnAction(e -> {
+
             Stage addStage = new Stage();
             Database db = new Database();
             CreateController cc = new CreateController(db);
-            new AddPage(addStage, cc);
+            UpdateController uc = new UpdateController(db);
+
+            new AddPage(addStage, cc, uc, null);
             addStage.show();
-        });
-
-        editButton.setOnAction(e -> {
-
-        });
-
-        deleteButton.setOnAction(e -> {
 
         });
 

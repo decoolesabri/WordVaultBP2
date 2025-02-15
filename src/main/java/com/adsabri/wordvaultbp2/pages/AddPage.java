@@ -2,6 +2,8 @@ package com.adsabri.wordvaultbp2.pages;
 
 import com.adsabri.wordvaultbp2.Application;
 import com.adsabri.wordvaultbp2.controllers.CreateController;
+import com.adsabri.wordvaultbp2.controllers.UpdateController;
+import com.adsabri.wordvaultbp2.models.Word;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -17,6 +19,8 @@ public class AddPage {
     private Stage stage;
     private Scene scene;
     private CreateController cc;
+    private UpdateController uc;
+    private Word selectedWord;
     private Pane root;
     private VBox topPane;
     private VBox middlePane;
@@ -30,16 +34,24 @@ public class AddPage {
     private Button homeButton;
     private Button listButton;
 
-    public AddPage (Stage stage, CreateController cc) {
+    public AddPage (Stage stage, CreateController cc, UpdateController uc, Word word) {
 
         this.stage = stage;
         this.cc = cc;
+        this.uc = uc;
+        this.selectedWord = word;
 
         root = new Pane();
         scene = new Scene(root, 600, 700);
         scene.getStylesheets().add(Application.class.getResource("stylesheets/addpage.css").toString());
 
         setupLayout();
+
+        if (word != null) {
+            textWord.setText(word.getWord());
+            textMeaning.setText(word.getMeaning());
+            textNote.setText(word.getNote());
+        }
 
         this.stage.setScene(scene);
         this.stage.setTitle("Add Page");
@@ -121,7 +133,15 @@ public class AddPage {
             String meaning = textMeaning.getText();
             String note = textNote.getText();
 
-            cc.save(word, meaning, note);
+            if (selectedWord == null) {
+                cc.save(word, meaning, note);
+            } else {
+                selectedWord.setWord(word);
+                selectedWord.setMeaning(meaning);
+                selectedWord.setNote(note);
+
+                uc.updateWord(selectedWord);
+            }
 
         });
 

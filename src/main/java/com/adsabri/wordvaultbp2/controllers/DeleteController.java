@@ -1,21 +1,26 @@
 package com.adsabri.wordvaultbp2.controllers;
 
 import com.adsabri.wordvaultbp2.Database;
+import com.adsabri.wordvaultbp2.models.Word;
 
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class DeleteController extends BaseController {
 
-    public DeleteController (Database db) {
+    public DeleteController(Database db) {
         super(db);
     }
 
-    public void delete(String word) {
-        try {
-            this.stmt.execute("DELETE FROM word WHERE word = '" + word + "'");
-            System.out.println("Woord succesvol verwijderd: " + word);
+    public void deleteWordFromDatabase(Word word) {
+
+        String sql = "DELETE FROM word WHERE id = ?";
+        try (PreparedStatement stmt = db.getConn().prepareStatement(sql)) {
+            stmt.setInt(1, word.getId());
+            stmt.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
+
     }
 }

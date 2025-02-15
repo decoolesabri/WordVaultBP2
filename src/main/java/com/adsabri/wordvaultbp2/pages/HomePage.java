@@ -3,6 +3,7 @@ package com.adsabri.wordvaultbp2.pages;
 import com.adsabri.wordvaultbp2.Application;
 import com.adsabri.wordvaultbp2.Database;
 import com.adsabri.wordvaultbp2.controllers.CreateController;
+import com.adsabri.wordvaultbp2.controllers.UpdateController;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -121,11 +122,11 @@ public class HomePage {
             Stage addStage = new Stage();
             Database db = new Database();
             CreateController cc = new CreateController(db);
-            new AddPage(addStage, cc);
-            addStage.show();
+            UpdateController uc = new UpdateController(db);  // Je maakt nu ook een instantie van UpdateController
 
-//            AddPage addPage = new AddPage(homeStage);
-//            homeStage.setScene(addPage.getScene());
+            // Maak de AddPage aan met zowel CreateController als UpdateController, en geef null door voor een nieuw woord
+            new AddPage(addStage, cc, uc, null);
+            addStage.show();
         });
 
         listButton.setOnAction(event -> {

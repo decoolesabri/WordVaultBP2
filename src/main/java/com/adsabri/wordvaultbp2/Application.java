@@ -37,4 +37,4 @@ public class Application extends javafx.application.Application {
 // Comments toevoegen
 // test van controllers maken
 
-//Tableview gebruiken van Robbie
+// Succesmelding woord create en update
