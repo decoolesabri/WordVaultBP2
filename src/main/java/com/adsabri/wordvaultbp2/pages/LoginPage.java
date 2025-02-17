@@ -22,6 +22,7 @@ public class LoginPage {
 
     private Pane root;
     private Scene scene;
+    private LoginController loginController;
     private VBox textPane;
     private VBox loginPane;
     private Image lBackground;
@@ -34,9 +35,9 @@ public class LoginPage {
     private PasswordField textPassword;
     private Button loginButton;
 
-    public LoginPage (Stage loginStage) {
+    public LoginPage (Stage loginStage, LoginController loginController) {
 
-        System.out.println("Login Page");
+        this.loginController = loginController;
 
         root = new Pane();
         scene = new Scene(root, 1400, 750);
@@ -134,7 +135,6 @@ public class LoginPage {
             String username = textUsername.getText();
             String password = textPassword.getText();
 
-            LoginController loginController = new LoginController();
             boolean loginSuccess = loginController.handleLogin(username, password);
 
             // Toon succesmelding en knop als login correct is
@@ -146,6 +146,7 @@ public class LoginPage {
             }
 
         });
+
 
     }
 

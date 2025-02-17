@@ -3,6 +3,7 @@ package com.adsabri.wordvaultbp2.pages;
 import com.adsabri.wordvaultbp2.Application;
 import com.adsabri.wordvaultbp2.Database;
 import com.adsabri.wordvaultbp2.controllers.CreateController;
+import com.adsabri.wordvaultbp2.controllers.LoginController;
 import com.adsabri.wordvaultbp2.controllers.UpdateController;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -123,9 +124,10 @@ public class HomePage {
             Database db = new Database();
             CreateController cc = new CreateController(db);
             UpdateController uc = new UpdateController(db);  // Je maakt nu ook een instantie van UpdateController
+            LoginController lc = new LoginController(db);
 
             // Maak de AddPage aan met zowel CreateController als UpdateController, en geef null door voor een nieuw woord
-            new AddPage(addStage, cc, uc, null);
+            new AddPage(addStage, cc, uc, lc, null);
             addStage.show();
         });
 
@@ -135,7 +137,12 @@ public class HomePage {
         });
 
         logoutButton.setOnAction(event -> {
-            LoginPage loginPage = new LoginPage(homeStage);
+            // Maak de LoginController aan en geef deze door aan de LoginPage constructor
+            Database db = new Database();
+            LoginController loginController = new LoginController(db);
+
+            // Geef de juiste constructor parameters door
+            LoginPage loginPage = new LoginPage(homeStage, loginController);
             homeStage.setScene(loginPage.getScene());
         });
 

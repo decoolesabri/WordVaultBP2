@@ -3,6 +3,7 @@ package com.adsabri.wordvaultbp2.pages;
 import com.adsabri.wordvaultbp2.Application;
 import com.adsabri.wordvaultbp2.controllers.CreateController;
 import com.adsabri.wordvaultbp2.controllers.UpdateController;
+import com.adsabri.wordvaultbp2.controllers.LoginController;
 import com.adsabri.wordvaultbp2.models.Word;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -20,6 +21,7 @@ public class AddPage {
     private Scene scene;
     private CreateController cc;
     private UpdateController uc;
+    private LoginController lc;
     private Word selectedWord;
     private Pane root;
     private VBox topPane;
@@ -34,11 +36,12 @@ public class AddPage {
     private Button homeButton;
     private Button listButton;
 
-    public AddPage (Stage stage, CreateController cc, UpdateController uc, Word word) {
+    public AddPage (Stage stage, CreateController cc, UpdateController uc, LoginController lc, Word word) {
 
         this.stage = stage;
         this.cc = cc;
         this.uc = uc;
+        this.lc = lc;
         this.selectedWord = word;
 
         root = new Pane();

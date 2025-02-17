@@ -52,11 +52,11 @@ public class ShowController extends BaseController {
 
                     // Als er een geselecteerd woord is, geef dit door voor bewerken
                     if (selectedWord != null) {
-                        AddPage addPage = new AddPage(stage, new CreateController(db), new UpdateController(db), selectedWord);
+                        AddPage addPage = new AddPage(stage, new CreateController(db), new UpdateController(db), new LoginController(db), selectedWord);
                         stage.setScene(addPage.getScene());
                     } else {
                         // Als er geen geselecteerd woord is, kun je naar een nieuw woord aanmaken pagina gaan
-                        AddPage addPage = new AddPage(stage, new CreateController(db), new UpdateController(db), null);
+                        AddPage addPage = new AddPage(stage, new CreateController(db), new UpdateController(db), new LoginController(db), null);
                         stage.setScene(addPage.getScene());
                     }
 
