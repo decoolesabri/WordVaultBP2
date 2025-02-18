@@ -2,6 +2,7 @@ package com.adsabri.wordvaultbp2.pages;
 
 import com.adsabri.wordvaultbp2.Application;
 import com.adsabri.wordvaultbp2.Database;
+import com.adsabri.wordvaultbp2.controllers.CategoryController;
 import com.adsabri.wordvaultbp2.controllers.CreateController;
 import com.adsabri.wordvaultbp2.controllers.LoginController;
 import com.adsabri.wordvaultbp2.controllers.UpdateController;
@@ -125,9 +126,10 @@ public class HomePage {
             CreateController cc = new CreateController(db);
             UpdateController uc = new UpdateController(db);  // Je maakt nu ook een instantie van UpdateController
             LoginController lc = new LoginController(db);
+            CategoryController catc = new CategoryController(db);
 
             // Maak de AddPage aan met zowel CreateController als UpdateController, en geef null door voor een nieuw woord
-            new AddPage(addStage, cc, uc, lc, null);
+            new AddPage(addStage, cc, uc, lc, catc, null);
             addStage.show();
         });
 

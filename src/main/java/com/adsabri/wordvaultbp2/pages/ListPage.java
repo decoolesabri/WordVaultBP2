@@ -2,10 +2,7 @@ package com.adsabri.wordvaultbp2.pages;
 
 import com.adsabri.wordvaultbp2.Application;
 import com.adsabri.wordvaultbp2.Database;
-import com.adsabri.wordvaultbp2.controllers.CreateController;
-import com.adsabri.wordvaultbp2.controllers.LoginController;
-import com.adsabri.wordvaultbp2.controllers.ShowController;
-import com.adsabri.wordvaultbp2.controllers.UpdateController;
+import com.adsabri.wordvaultbp2.controllers.*;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -112,8 +109,9 @@ public class ListPage {
             CreateController cc = new CreateController(db);
             UpdateController uc = new UpdateController(db);
             LoginController lc = new LoginController(db);
+            CategoryController catc = new CategoryController(db);
 
-            new AddPage(addStage, cc, uc, lc, null);
+            new AddPage(addStage, cc, uc, lc, catc, null);
             addStage.show();
 
         });

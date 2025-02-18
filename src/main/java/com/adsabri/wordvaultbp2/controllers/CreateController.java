@@ -1,7 +1,7 @@
 package com.adsabri.wordvaultbp2.controllers;
 
 import com.adsabri.wordvaultbp2.Database;
-import com.adsabri.wordvaultbp2.UserSession; // Zorg ervoor dat je de UserSession klasse importeert
+import com.adsabri.wordvaultbp2.UserSession;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,14 +27,14 @@ public class CreateController extends BaseController {
         }
     }
 
-    public void save(String word, String meaning, String note) {
+    public int save (String word, String meaning, String note) {
         // Haal het loggedInUserId op uit de UserSession
         int loggedInUserId = UserSession.getLoggedInUserId();
 
         // Controleer of de gebruiker bestaat, anders stop de operatie.
         if (!userExists(loggedInUserId)) {
             System.out.println("De gebruiker bestaat niet, kan geen woorden opslaan.");
-            return;
+            return loggedInUserId;
         }
 
         try {
@@ -60,6 +60,7 @@ public class CreateController extends BaseController {
 
                     insertUserWordStmt.executeUpdate();
                     System.out.println("Woord succesvol gekoppeld aan gebruiker ID: " + loggedInUserId);
+
                 }
             }
 
@@ -68,5 +69,7 @@ public class CreateController extends BaseController {
             e.printStackTrace();
             throw new RuntimeException("Fout bij het opslaan van het woord of koppelen aan gebruiker.", e);
         }
+        return loggedInUserId;
     }
+
 }

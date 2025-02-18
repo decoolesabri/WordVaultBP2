@@ -1,6 +1,7 @@
 package com.adsabri.wordvaultbp2.controllers;
 
 import com.adsabri.wordvaultbp2.Database;
+import com.adsabri.wordvaultbp2.UserSession;
 import com.adsabri.wordvaultbp2.models.Word;
 import com.adsabri.wordvaultbp2.pages.AddPage;
 import javafx.collections.FXCollections;
@@ -28,7 +29,6 @@ public class ShowController extends BaseController {
     }
 
     public void show(TableView<Word> tableView) {
-
         // Maak kolommen aan voor TableView
         TableColumn<Word, String> wordColumn = new TableColumn<>("Word");
         wordColumn.setCellValueFactory(new PropertyValueFactory<>("word"));
@@ -41,25 +41,20 @@ public class ShowController extends BaseController {
 
         TableColumn<Word, Void> editColumn = new TableColumn<>("Edit");
         editColumn.setCellFactory(col -> new TableCell<>() {
-
             private final Button editButton = new Button("Edit");
 
             {
                 editButton.setOnAction(e -> {
-
                     Word selectedWord = getTableView().getItems().get(getIndex());
                     Stage stage = (Stage) getTableView().getScene().getWindow();
 
-                    // Als er een geselecteerd woord is, geef dit door voor bewerken
                     if (selectedWord != null) {
-                        AddPage addPage = new AddPage(stage, new CreateController(db), new UpdateController(db), new LoginController(db), selectedWord);
+                        AddPage addPage = new AddPage(stage, new CreateController(db), new UpdateController(db), new LoginController(db), new CategoryController(db), selectedWord);
                         stage.setScene(addPage.getScene());
                     } else {
-                        // Als er geen geselecteerd woord is, kun je naar een nieuw woord aanmaken pagina gaan
-                        AddPage addPage = new AddPage(stage, new CreateController(db), new UpdateController(db), new LoginController(db), null);
+                        AddPage addPage = new AddPage(stage, new CreateController(db), new UpdateController(db), new LoginController(db), new CategoryController(db), null);
                         stage.setScene(addPage.getScene());
                     }
-
                 });
             }
 
@@ -76,19 +71,15 @@ public class ShowController extends BaseController {
 
         TableColumn<Word, Void> deleteColumn = new TableColumn<>("Delete");
         deleteColumn.setCellFactory(col -> new TableCell<>() {
-
             private final Button deleteButton = new Button("Delete");
 
             {
                 deleteButton.setOnAction(e -> {
-
                     Word selectedWord = getTableView().getItems().get(getIndex());
                     if (selectedWord != null) {
-                        // Roep de delete-methode aan via de instantie van DeleteController
                         deleteController.deleteWordFromDatabase(selectedWord);
-                        getTableView().getItems().remove(selectedWord); // Verwijder het woord uit de TableView
+                        getTableView().getItems().remove(selectedWord);
                     }
-
                 });
             }
 
@@ -103,15 +94,24 @@ public class ShowController extends BaseController {
             }
         });
 
-        // Voeg kolommen toe aan de TableView
         tableView.getColumns().addAll(wordColumn, meaningColumn, noteColumn, editColumn, deleteColumn);
+
+        // Controleer of de gebruiker is ingelogd
+        if (!UserSession.isLoggedIn()) {
+            System.out.println("Geen gebruiker ingelogd. Kan woorden niet ophalen.");
+            return;
+        }
 
         // Data ophalen uit de database
         ObservableList<Word> wordsList = FXCollections.observableArrayList();
 
-        String query = "SELECT * FROM word";
-        try (PreparedStatement stmt = db.getConn().prepareStatement(query);
-             ResultSet rs = stmt.executeQuery()) {
+        String query = "SELECT w.id, w.word, w.meaning, w.note " +
+                "FROM word w " +
+                "INNER JOIN user_word uw ON w.id = uw.word_id " +
+                "WHERE uw.user_id = ?";
+        try (PreparedStatement stmt = db.getConn().prepareStatement(query)) {
+            stmt.setInt(1, UserSession.getLoggedInUserId()); // Gebruik het ingelogde user_id
+            ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 wordsList.add(new Word(
@@ -127,7 +127,6 @@ public class ShowController extends BaseController {
 
         // Voeg de data toe aan de TableView
         tableView.setItems(wordsList);
-
     }
 
 }

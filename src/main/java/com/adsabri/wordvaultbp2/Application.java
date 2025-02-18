@@ -13,7 +13,7 @@ import java.io.IOException;
 public class Application extends javafx.application.Application {
 
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start (Stage stage) throws IOException {
 
         Database db = new Database();
         CreateController cc = new CreateController(db);
@@ -41,6 +41,6 @@ public class Application extends javafx.application.Application {
 
 // Succesmelding woord create en update
 
-// Woord word nu gekoppeld met user id, maar elke user kan de woorden zien,
-// zorg ervoor dat de view van woorden ook aan user id gekoppeld word
-// (zo ook bewerken en verwijderen, maar dat zit er automatisch bij)
+// Category in de applicatie verwerken
+// Probeer de gehele afhandeling van de categorie los te doen van de rest
+// De gekozen category komt al aan bij de categorycontroller

@@ -1,15 +1,13 @@
 package com.adsabri.wordvaultbp2.pages;
 
 import com.adsabri.wordvaultbp2.Application;
+import com.adsabri.wordvaultbp2.controllers.CategoryController;
 import com.adsabri.wordvaultbp2.controllers.CreateController;
 import com.adsabri.wordvaultbp2.controllers.UpdateController;
 import com.adsabri.wordvaultbp2.controllers.LoginController;
 import com.adsabri.wordvaultbp2.models.Word;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -22,6 +20,7 @@ public class AddPage {
     private CreateController cc;
     private UpdateController uc;
     private LoginController lc;
+    private CategoryController catc;
     private Word selectedWord;
     private Pane root;
     private VBox topPane;
@@ -32,16 +31,18 @@ public class AddPage {
     private TextField textWord;
     private TextField textMeaning;
     private TextArea textNote;
+    private ComboBox<String> categoryBox;
     private Button saveButton;
     private Button homeButton;
     private Button listButton;
 
-    public AddPage (Stage stage, CreateController cc, UpdateController uc, LoginController lc, Word word) {
+    public AddPage (Stage stage, CreateController cc, UpdateController uc, LoginController lc, CategoryController catc, Word word) {
 
         this.stage = stage;
         this.cc = cc;
         this.uc = uc;
         this.lc = lc;
+        this.catc = catc;
         this.selectedWord = word;
 
         root = new Pane();
@@ -80,6 +81,9 @@ public class AddPage {
         textMeaning.setPromptText("Enter translation");
         textNote.setPromptText("Enter note or example sentence");
         textNote.setPrefHeight(100);
+
+        categoryBox = new ComboBox();
+        categoryBox.getItems().addAll("Noun", "Adjective", "Verb", "Adverb", "Numeral");
 
         saveButton = new Button("Save");
         homeButton = new Button("Back");
@@ -135,6 +139,12 @@ public class AddPage {
             String word = textWord.getText();
             String meaning = textMeaning.getText();
             String note = textNote.getText();
+            String selectedCategory = categoryBox.getValue();
+
+            if (selectedCategory != null) {
+                // Geef de geselecteerde categorie door aan de CategoryController
+                catc.handleCategorySelection(selectedCategory);
+            }
 
             if (selectedWord == null) {
                 cc.save(word, meaning, note);
@@ -179,7 +189,7 @@ public class AddPage {
     private void addChildren () {
         root.getChildren().addAll(topPane, middlePane, savePane, buttonPane);
         topPane.getChildren().addAll(label);
-        middlePane.getChildren().addAll(textWord, textMeaning, textNote);
+        middlePane.getChildren().addAll(textWord, textMeaning, textNote, categoryBox);
         savePane.getChildren().addAll(saveButton);
         buttonPane.getChildren().addAll(homeButton, listButton);
     }

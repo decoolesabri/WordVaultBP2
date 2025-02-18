@@ -9,7 +9,7 @@ public abstract class BaseController {
     protected Database db;
     protected Statement stmt;
 
-    public BaseController(Database db) {
+    public BaseController (Database db) {
 
         this.db = db;
         try {
