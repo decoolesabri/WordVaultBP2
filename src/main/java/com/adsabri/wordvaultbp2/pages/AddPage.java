@@ -83,7 +83,7 @@ public class AddPage {
         textNote.setPrefHeight(100);
 
         categoryBox = new ComboBox();
-        categoryBox.getItems().addAll("Noun", "Adjective", "Verb", "Adverb", "Numeral");
+        categoryBox.getItems().addAll(catc.getCategories());
 
         saveButton = new Button("Save");
         homeButton = new Button("Back");
@@ -135,19 +135,18 @@ public class AddPage {
     private void setOnAction () {
 
         saveButton.setOnAction(e -> {
-
             String word = textWord.getText();
             String meaning = textMeaning.getText();
             String note = textNote.getText();
             String selectedCategory = categoryBox.getValue();
 
+            Integer categoryId = null;
             if (selectedCategory != null) {
-                // Geef de geselecteerde categorie door aan de CategoryController
-                catc.handleCategorySelection(selectedCategory);
+                categoryId = catc.getCategoryId(selectedCategory);
             }
 
             if (selectedWord == null) {
-                cc.save(word, meaning, note);
+                cc.save(word, meaning, note, selectedCategory);
             } else {
                 selectedWord.setWord(word);
                 selectedWord.setMeaning(meaning);
@@ -155,8 +154,8 @@ public class AddPage {
 
                 uc.updateWord(selectedWord);
             }
-
         });
+
 
         homeButton.setOnAction(e -> {
             HomePage homePage = new HomePage(stage);

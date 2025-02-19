@@ -94,7 +94,10 @@ public class ShowController extends BaseController {
             }
         });
 
-        tableView.getColumns().addAll(wordColumn, meaningColumn, noteColumn, editColumn, deleteColumn);
+        TableColumn<Word, String> categoryColumn = new TableColumn<>("Category");
+        categoryColumn.setCellValueFactory(new PropertyValueFactory<>("category"));
+
+        tableView.getColumns().addAll(wordColumn, meaningColumn, noteColumn, editColumn, deleteColumn, categoryColumn);
 
         // Controleer of de gebruiker is ingelogd
         if (!UserSession.isLoggedIn()) {
@@ -105,10 +108,14 @@ public class ShowController extends BaseController {
         // Data ophalen uit de database
         ObservableList<Word> wordsList = FXCollections.observableArrayList();
 
-        String query = "SELECT w.id, w.word, w.meaning, w.note " +
+        String query = "SELECT w.id, w.word, w.meaning, w.note, c.name AS category " +
                 "FROM word w " +
                 "INNER JOIN user_word uw ON w.id = uw.word_id " +
+                "INNER JOIN word_category wc ON w.id = wc.word_id " +
+                "INNER JOIN category c ON wc.category_id = c.id " +
                 "WHERE uw.user_id = ?";
+
+
         try (PreparedStatement stmt = db.getConn().prepareStatement(query)) {
             stmt.setInt(1, UserSession.getLoggedInUserId()); // Gebruik het ingelogde user_id
             ResultSet rs = stmt.executeQuery();
@@ -118,7 +125,8 @@ public class ShowController extends BaseController {
                         rs.getInt("id"),
                         rs.getString("word"),
                         rs.getString("meaning"),
-                        rs.getString("note")
+                        rs.getString("note"),
+                        rs.getString("category")
                 ));
             }
         } catch (SQLException e) {

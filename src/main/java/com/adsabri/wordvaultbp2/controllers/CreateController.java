@@ -27,7 +27,7 @@ public class CreateController extends BaseController {
         }
     }
 
-    public int save (String word, String meaning, String note) {
+    public int save (String word, String meaning, String note, String categoryName) {
         // Haal het loggedInUserId op uit de UserSession
         int loggedInUserId = UserSession.getLoggedInUserId();
 
@@ -44,8 +44,8 @@ public class CreateController extends BaseController {
             insertWordStmt.setString(1, word);
             insertWordStmt.setString(2, meaning);
             insertWordStmt.setString(3, note);
-
             int rowsAffected = insertWordStmt.executeUpdate();
+
             if (rowsAffected > 0) {
                 ResultSet generatedKeys = insertWordStmt.getGeneratedKeys();
                 if (generatedKeys.next()) {
@@ -57,9 +57,22 @@ public class CreateController extends BaseController {
                     PreparedStatement insertUserWordStmt = db.getConn().prepareStatement(insertUserWordQuery);
                     insertUserWordStmt.setInt(1, loggedInUserId);
                     insertUserWordStmt.setInt(2, newWordId);
-
                     insertUserWordStmt.executeUpdate();
                     System.out.println("Woord succesvol gekoppeld aan gebruiker ID: " + loggedInUserId);
+
+                    // 3. Zoek de category_id op basis van de naam
+                    int categoryId = getCategoryId(categoryName);
+                    if (categoryId != -1) {
+                        // 4. Voeg de categorie-koppeling toe aan word_category
+                        String insertWordCategoryQuery = "INSERT INTO word_category (word_id, category_id) VALUES (?, ?)";
+                        PreparedStatement insertWordCategoryStmt = db.getConn().prepareStatement(insertWordCategoryQuery);
+                        insertWordCategoryStmt.setInt(1, newWordId);
+                        insertWordCategoryStmt.setInt(2, categoryId);
+                        insertWordCategoryStmt.executeUpdate();
+                        System.out.println("Categorie succesvol gekoppeld aan woord ID: " + newWordId);
+                    } else {
+                        System.out.println("Fout: categorie niet gevonden.");
+                    }
 
                 }
             }
@@ -71,5 +84,22 @@ public class CreateController extends BaseController {
         }
         return loggedInUserId;
     }
+
+    private int getCategoryId(String categoryName) {
+        try {
+            String query = "SELECT id FROM category WHERE name = ?";
+            PreparedStatement stmt = db.getConn().prepareStatement(query);
+            stmt.setString(1, categoryName);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt("id");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1; // Geeft -1 terug als de categorie niet bestaat
+    }
+
 
 }

@@ -11,12 +11,14 @@ public class Word {
     private final StringProperty word;
     private final StringProperty meaning;
     private final StringProperty note;
+    private final StringProperty category;
 
-    public Word(int id, String word, String meaning, String note) {
+    public Word(int id, String word, String meaning, String note, String category) {
         this.id = new SimpleIntegerProperty(id);
         this.word = new SimpleStringProperty(word);
         this.meaning = new SimpleStringProperty(meaning);
         this.note = new SimpleStringProperty(note);
+        this.category = new SimpleStringProperty(category);
     }
 
     public int getId() {
@@ -62,4 +64,17 @@ public class Word {
     public StringProperty noteProperty() {
         return note;
     }
+
+    public String getCategory() {
+        return category.get();
+    }
+
+    public void setCategory(String category) {
+        this.category.set(category);
+    }
+
+    public StringProperty categoryProperty() {
+        return category;
+    }
+
 }
