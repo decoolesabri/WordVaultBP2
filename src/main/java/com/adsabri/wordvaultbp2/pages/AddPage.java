@@ -152,7 +152,7 @@ public class AddPage {
                 selectedWord.setMeaning(meaning);
                 selectedWord.setNote(note);
 
-                uc.updateWord(selectedWord);
+                uc.updateWord(selectedWord, categoryId);
             }
         });
 

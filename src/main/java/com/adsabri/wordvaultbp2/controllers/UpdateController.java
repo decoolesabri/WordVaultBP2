@@ -12,7 +12,7 @@ public class UpdateController extends BaseController {
         super(db);
     }
 
-    public void updateWord(Word word) {
+    public void updateWord(Word word, int categoryId) {
 
         try {
             String sql = "UPDATE word SET word = ?, meaning = ?, note = ? WHERE id = ?";
@@ -23,6 +23,14 @@ public class UpdateController extends BaseController {
                 stmt.setInt(4, word.getId());
                 stmt.executeUpdate();
             }
+
+            sql = "UPDATE word_category SET category_id = ? WHERE word_id = ?";
+            try (PreparedStatement stmt = db.getConn().prepareStatement(sql)) {
+                stmt.setInt(1, categoryId);  // Nieuwe category_id
+                stmt.setInt(2, word.getId()); // Het woord_id
+                stmt.executeUpdate();
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

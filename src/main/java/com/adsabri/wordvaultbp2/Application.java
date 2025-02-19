@@ -37,10 +37,6 @@ public class Application extends javafx.application.Application {
 // Stylesheet advies verwerken
 // Namen van de onderdelen goed maken, engels/nederlands
 // Comments toevoegen
-// test van controllers maken
-
 // Succesmelding woord create en update
-
-// Category in de applicatie verwerken
-// Probeer de gehele afhandeling van de categorie los te doen van de rest
-// De gekozen category komt al aan bij de categorycontroller
+// Listpage meteen updaten na invoeren woord
+// test van controllers en CRUD maken
