@@ -46,16 +46,20 @@ public class ShowController extends BaseController {
             {
                 editButton.setOnAction(e -> {
                     Word selectedWord = getTableView().getItems().get(getIndex());
-                    Stage stage = (Stage) getTableView().getScene().getWindow();
+                    Stage currentStage = (Stage) getTableView().getScene().getWindow();  // Huidige stage
+                    Stage newStage = new Stage();  // Nieuwe stage voor de AddPage
 
                     if (selectedWord != null) {
-                        AddPage addPage = new AddPage(stage, new CreateController(db), new UpdateController(db), new LoginController(db), new CategoryController(db), selectedWord);
-                        stage.setScene(addPage.getScene());
+                        AddPage addPage = new AddPage(newStage, new CreateController(db), new UpdateController(db), new LoginController(db), new CategoryController(db), selectedWord);
+                        newStage.setScene(addPage.getScene());  // Nieuwe scene in de nieuwe stage
+                        newStage.show();  // Open de nieuwe stage
                     } else {
-                        AddPage addPage = new AddPage(stage, new CreateController(db), new UpdateController(db), new LoginController(db), new CategoryController(db), null);
-                        stage.setScene(addPage.getScene());
+                        AddPage addPage = new AddPage(newStage, new CreateController(db), new UpdateController(db), new LoginController(db), new CategoryController(db), null);
+                        newStage.setScene(addPage.getScene());
+                        newStage.show();
                     }
                 });
+
             }
 
             @Override

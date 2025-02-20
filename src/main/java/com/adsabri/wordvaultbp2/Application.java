@@ -34,9 +34,7 @@ public class Application extends javafx.application.Application {
     }
 }
 
-// Stylesheet advies verwerken
+// Nieuwe positie geven van panes
 // Namen van de onderdelen goed maken, engels/nederlands
 // Comments toevoegen
-// Succesmelding woord create en update
-// Listpage meteen updaten na invoeren woord
 // test van controllers en CRUD maken

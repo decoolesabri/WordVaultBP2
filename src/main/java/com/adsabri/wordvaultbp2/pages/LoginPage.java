@@ -17,6 +17,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import javafx.geometry.Rectangle2D;
+import javafx.stage.Screen;
 
 public class LoginPage {
 
@@ -34,16 +36,25 @@ public class LoginPage {
     private TextField textUsername;
     private PasswordField textPassword;
     private Button loginButton;
+    private double screenWidth;
+    private double screenHeight;
 
     public LoginPage (Stage loginStage, LoginController loginController) {
 
         this.loginController = loginController;
 
+        Rectangle2D primaryScreenBounds = Screen.getPrimary().getBounds();
+        this.screenWidth = primaryScreenBounds.getWidth();
+        this.screenHeight = primaryScreenBounds.getHeight();
+
+        // Maak de root en scene op basis van het schermformaat
         root = new Pane();
-        scene = new Scene(root, 1400, 750);
+        scene = new Scene(root, screenWidth, screenHeight);  // Stel de scene in op full-screen
         scene.getStylesheets().add(Application.class.getResource("stylesheets/loginpage.css").toString());
 
         setupLayout();
+
+        loginStage.setFullScreen(true);
 
         loginStage.setScene(scene);
         loginStage.setTitle("Login Page");
@@ -98,8 +109,8 @@ public class LoginPage {
         loginPane.setPrefSize(400, 470);
         textPane.setPrefSize(510, 200);
 
-        backgroundImage.setFitWidth(1400);
-        backgroundImage.setFitHeight(750);
+        backgroundImage.setFitWidth(screenWidth);
+        backgroundImage.setFitHeight(screenHeight);
 
         textUsername.setMaxWidth(300);
         textPassword.setMaxWidth(300);
@@ -146,7 +157,6 @@ public class LoginPage {
             }
 
         });
-
 
     }
 

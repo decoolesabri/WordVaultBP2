@@ -1,6 +1,6 @@
 /*Panes*/
 #rootPane {
-    -fx-background-color: lightblue;
+    -fx-background-color: #a0ffab;
 }
 
 #topPane {
@@ -36,6 +36,10 @@
     -fx-text-fill: black;
 }
 
+#successLabel {
+    -fx-text-fill: green; -fx-font-size: 14px;
+}
+
 /*Buttons*/
 #saveButton {
     -fx-background-color: #4CAF50;
@@ -46,7 +50,7 @@
 }
 
 #saveButton:hover {
-    -fx-background-color: #45a049;
+    -fx-background-color: #dad670;
 }
 
 #backButton {
@@ -58,7 +62,7 @@
 }
 
 #backButton:hover {
-    -fx-background-color: #45a049;
+    -fx-background-color: #dad670;
 }
 
 #listButton {
@@ -70,5 +74,5 @@
 }
 
 #listButton:hover {
-    -fx-background-color: #45a049;
+    -fx-background-color: #dad670;
 }

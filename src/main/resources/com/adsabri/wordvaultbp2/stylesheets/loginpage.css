@@ -5,7 +5,7 @@
 }
 
 #textPane {
-    -fx-background-color: rgba(255, 215, 0, 0.7);
+    -fx-background-color: rgba(255, 150, 54, 0.7);
     -fx-border-radius: 20px;
     -fx-background-radius: 20px;
     -fx-padding: 20px;
@@ -45,7 +45,7 @@
 }
 
 #successLabel {
-    -fx-text-fill: green;
+    -fx-text-fill: #57ff03;
     -fx-font-size: 20px;
 }
 
@@ -55,7 +55,7 @@
 
 /*Buttons*/
 #loginButton {
-    -fx-background-color: #4CAF50;
+    -fx-background-color: #57ff03;
     -fx-text-fill: white;
     -fx-font-size: 16px;
     -fx-padding: 10px 20px;
@@ -63,11 +63,11 @@
 }
 
 #loginButton:hover {
-    -fx-background-color: #45a049;
+    -fx-background-color: #00c90d;
 }
 
 #continueButton {
-    -fx-background-color: #4CAF50;
+    -fx-background-color: #57ff03;
     -fx-text-fill: white;
     -fx-font-size: 16px;
     -fx-padding: 10px 20px;
@@ -75,7 +75,7 @@
 }
 
 #continueButton:hover {
-    -fx-background-color: #45a049;
+    -fx-background-color: #00c90d;
 }
 
 /*Tekstvelden*/

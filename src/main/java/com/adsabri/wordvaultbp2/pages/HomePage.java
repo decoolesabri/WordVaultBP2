@@ -8,6 +8,7 @@ import com.adsabri.wordvaultbp2.controllers.LoginController;
 import com.adsabri.wordvaultbp2.controllers.UpdateController;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -15,6 +16,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 public class HomePage {
@@ -33,13 +35,20 @@ public class HomePage {
     private Button addButton;
     private Button listButton;
     private Button logoutButton;
+    private double screenWidth;
+    private double screenHeight;
 
     public HomePage (Stage homeStage) {
 
         this.homeStage = homeStage;
 
+        Rectangle2D primaryScreenBounds = Screen.getPrimary().getBounds();
+        this.screenWidth = primaryScreenBounds.getWidth();
+        this.screenHeight = primaryScreenBounds.getHeight();
+
+        // Maak de root en scene op basis van het schermformaat
         root = new Pane();
-        scene = new Scene(root, 1400, 750);
+        scene = new Scene(root, screenWidth, screenHeight);  // Stel de scene in op full-screen
         scene.getStylesheets().add(Application.class.getResource("stylesheets/homepage.css").toString());
 
         setupLayout();
@@ -61,8 +70,8 @@ public class HomePage {
         backgroundImage = new ImageView();
         backgroundImage.setImage(hBackground);
 
-        backgroundImage.setFitWidth(1400);
-        backgroundImage.setFitHeight(750);
+        backgroundImage.setFitWidth(screenWidth);
+        backgroundImage.setFitHeight(screenHeight);
 
         backgroundImage.setPreserveRatio(false);
 

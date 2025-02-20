@@ -86,7 +86,7 @@ public class AddPage {
         categoryBox.getItems().addAll(catc.getCategories());
 
         saveButton = new Button("Save");
-        homeButton = new Button("Back");
+        homeButton = new Button("Home");
         listButton = new Button("List");
 
         // id's geven aan de onderdelen
@@ -135,50 +135,106 @@ public class AddPage {
     private void setOnAction () {
 
         saveButton.setOnAction(e -> {
+            // Haal de ingevoerde gegevens op
             String word = textWord.getText();
             String meaning = textMeaning.getText();
             String note = textNote.getText();
-            String selectedCategory = categoryBox.getValue();
+            String selectedCategory = categoryBox.getValue(); // Haal de geselecteerde categorie op
 
+            // Haal de categoryId op als een categorie geselecteerd is
             Integer categoryId = null;
             if (selectedCategory != null) {
-                categoryId = catc.getCategoryId(selectedCategory);
+                categoryId = catc.getCategoryId(selectedCategory); // Haal de categoryId op
             }
 
             if (selectedWord == null) {
+                // Als er geen geselecteerd woord is, sla dan het nieuwe woord op met de gekozen categorie
                 cc.save(word, meaning, note, selectedCategory);
             } else {
+                // Als er een geselecteerd woord is, werk het woord bij met de nieuwe gegevens en de categorie
                 selectedWord.setWord(word);
                 selectedWord.setMeaning(meaning);
                 selectedWord.setNote(note);
-
-                uc.updateWord(selectedWord, categoryId);
+                uc.updateWord(selectedWord, categoryId); // Werk het woord bij en voeg de juiste categorie toe
             }
+
+            showSuccessMessage(); // Toon het succesbericht direct na het opslaan
         });
 
+
+//        saveButton.setOnAction(e -> {
+//            String word = textWord.getText();
+//            String meaning = textMeaning.getText();
+//            String note = textNote.getText();
+//            String selectedCategory = categoryBox.getValue();
+//
+//            Integer categoryId = null;
+//            if (selectedCategory != null) {
+//                categoryId = catc.getCategoryId(selectedCategory);
+//            }
+//
+//            if (selectedWord == null) {
+//                cc.save(word, meaning, note, selectedCategory); // Return waarde opslaan
+//            } else {
+//                selectedWord.setWord(word);
+//                selectedWord.setMeaning(meaning);
+//                selectedWord.setNote(note);
+//                uc.updateWord(selectedWord, categoryId);
+//            }
+//
+//            showSuccessMessage(); // Direct na opslaan tonen
+//        });
 
         homeButton.setOnAction(e -> {
-            HomePage homePage = new HomePage(stage);
-            stage.setScene(homePage.getScene());
+            // Sluit de huidige AddPage
+            stage.close();
+
+            // Maak een nieuwe Stage voor de HomePage
+            Stage newStage = new Stage();
+
+            // Maak een nieuwe HomePage aan en geef de nieuwe Stage door
+            HomePage homePage = new HomePage(newStage);
+
+            // Zet de scene voor de nieuwe Stage naar de scene van de HomePage
+            newStage.setScene(homePage.getScene());
+
+            // Maak het nieuwe Stage zichtbaar
+            newStage.show();
         });
 
+
         listButton.setOnAction(e -> {
-            ListPage listPage = new ListPage(stage);
-            stage.setScene(listPage.getScene());
+
+            // Sluit de huidige AddPage
+            stage.close();
+
+            // Maak een nieuwe Stage voor de ListPage
+            Stage newStage = new Stage();
+
+            // Maak een nieuwe ListPage aan en geef de nieuwe Stage door
+            ListPage listPage = new ListPage(newStage);
+
+            // Zet de scene voor de nieuwe Stage naar de scene van de ListPage
+            newStage.setScene(listPage.getScene());
+
+            // Maak het nieuwe Stage zichtbaar
+            newStage.show();
         });
+
 
     }
 
     private void showSuccessMessage() {
 
-        Label successLabel = new Label("Opslaan succesvol!");
+        // Controleer of er al een melding bestaat en verwijder deze
+        middlePane.getChildren().removeIf(node -> node instanceof Label && "successLabel".equals(node.getId()));
+
+        // Maak een nieuwe succesmelding aan
+        Label successLabel = new Label("Save successful! Reopen the list page.");
         successLabel.setId("successLabel");
 
-        // Voeg de melding en knop toe aan de loginPane
-        middlePane.getChildren().addAll(successLabel);
-
-        // Kijken of dit werkt
-
+        // Voeg het label toe aan de savePane
+        middlePane.getChildren().add(successLabel);
     }
 
     public Scene getScene() {
