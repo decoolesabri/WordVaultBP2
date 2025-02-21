@@ -99,7 +99,7 @@ public class AddPage {
         savePane.setId("savePane");
         buttonPane.setId("buttonPane");
 
-        topLabel.setId("label");
+        topLabel.setId("topLabel");
         textWord.setId("word");
         textMeaning.setId("meaning");
         textNote.setId("note");

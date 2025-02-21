@@ -75,7 +75,7 @@ public class HomePage {
 
         backgroundImage.setPreserveRatio(false);
 
-        topLabel = new Label("Welcome, 'Username'");
+        topLabel = new Label("Welcome to your dictionary!");
         leftLabel = new Label("A powerfull tool to create and manage your personalized wordlist, store translations and notes, and built your language skills step by step in an organized way!");
 
         addButton = new Button("Add word!");
@@ -97,7 +97,7 @@ public class HomePage {
         logoutButton.setId("bottomButton");
 
         // Sizes
-        topPane.setPrefSize(430, 100);
+        topPane.setPrefSize(550, 100);
         leftPane.setPrefSize(300, 500);
         rightPane.setPrefSize(600, 500);
         bottomPane.setPrefSize(125, 75);
