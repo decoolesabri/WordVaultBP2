@@ -14,7 +14,7 @@ public class Database {
 
     public Database() {
 
-        //Verbinding met de database
+        // Verbinding met de database
         try {
             conn = DriverManager.getConnection("jdbc:mysql://localhost/wordvaultspanish", "root", "");
             System.out.println("Connected to database");

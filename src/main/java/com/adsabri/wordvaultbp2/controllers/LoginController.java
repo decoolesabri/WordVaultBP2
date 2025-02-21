@@ -2,24 +2,25 @@ package com.adsabri.wordvaultbp2.controllers;
 
 import com.adsabri.wordvaultbp2.Database;
 import com.adsabri.wordvaultbp2.UserSession;
-import com.adsabri.wordvaultbp2.controllers.BaseController;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class LoginController extends BaseController {
+
     private int loggedInUserId;
 
     public LoginController(Database db) {
         super(db);
     }
 
-    public int getLoggedInUserId() {
-        return loggedInUserId;
-    }
+//    public int getLoggedInUserId() {
+//        return loggedInUserId;
+//    }
 
     public boolean handleLogin(String username, String password) {
+
+        // Checken of er lege velden zijn
         if (username.isEmpty() || password.isEmpty()) {
             System.out.println("Login mislukt: velden mogen niet leeg zijn!");
             return false;
@@ -38,6 +39,7 @@ public class LoginController extends BaseController {
                 System.out.println("Gebruiker bestaat al. ID: " + loggedInUserId);
                 return true;
             } else {
+                // Nieuwe user aanmaken
                 String insertQuery = "INSERT INTO user (name, password) VALUES (?, ?)";
                 PreparedStatement insertStmt = db.getConn().prepareStatement(insertQuery, PreparedStatement.RETURN_GENERATED_KEYS);
                 insertStmt.setString(1, username);

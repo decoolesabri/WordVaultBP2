@@ -9,14 +9,15 @@ import java.util.Map;
 
 public class CategoryController extends BaseController {
 
-    private Map<String, Integer> categoryMap = new HashMap<>(); // Houdt id's bij
+    // Id's bijhouden
+    private Map<String, Integer> categoryMap = new HashMap<>();
 
     public CategoryController(Database db) {
         super(db);
         loadCategories();
     }
 
-    // Haalt categorieën uit de database en slaat ze op in een map
+    // Haal categorieën uit de database en sla ze op in een map
     private void loadCategories() {
         try {
             String query = "SELECT id, name FROM category";
@@ -31,7 +32,7 @@ public class CategoryController extends BaseController {
         }
     }
 
-    // Geeft de ID van een categorie terug
+    // Geeft de id van een categorie terug
     public Integer getCategoryId(String categoryName) {
         return categoryMap.get(categoryName);
     }

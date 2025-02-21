@@ -18,7 +18,6 @@
     -fx-background-radius: 20px;
     -fx-padding: 20px;
     -fx-spacing: 30px;
-    /*-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 15, 0.5, 5, 10);*/
 }
 
 #savePane {
@@ -31,7 +30,7 @@
 }
 
 /*Labels*/
-#label {
+#topLabel {
     -fx-font-size: 31px;
     -fx-text-fill: black;
 }

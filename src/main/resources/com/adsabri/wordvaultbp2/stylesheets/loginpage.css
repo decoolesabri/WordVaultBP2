@@ -1,9 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Agu+Display&display=swap');
 
 /*Panes*/
-#rootPane {
-}
-
 #textPane {
     -fx-background-color: rgba(255, 150, 54, 0.7);
     -fx-border-radius: 20px;

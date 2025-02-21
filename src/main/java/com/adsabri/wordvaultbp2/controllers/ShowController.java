@@ -12,7 +12,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,12 +22,15 @@ public class ShowController extends BaseController {
     private DeleteController deleteController;
 
     public ShowController(Database db) {
+
         super(db);
         this.updateController = new UpdateController(db);
         this.deleteController = new DeleteController(db);
+
     }
 
     public void show(TableView<Word> tableView) {
+
         // Maak kolommen aan voor TableView
         TableColumn<Word, String> wordColumn = new TableColumn<>("Word");
         wordColumn.setCellValueFactory(new PropertyValueFactory<>("word"));
@@ -45,6 +47,7 @@ public class ShowController extends BaseController {
 
             {
                 editButton.setOnAction(e -> {
+
                     Word selectedWord = getTableView().getItems().get(getIndex());
                     Stage currentStage = (Stage) getTableView().getScene().getWindow();  // Huidige stage
                     Stage newStage = new Stage();  // Nieuwe stage voor de AddPage
@@ -78,6 +81,7 @@ public class ShowController extends BaseController {
             private final Button deleteButton = new Button("Delete");
 
             {
+                // Delete button om een woord te verwijderen
                 deleteButton.setOnAction(e -> {
                     Word selectedWord = getTableView().getItems().get(getIndex());
                     if (selectedWord != null) {
@@ -101,6 +105,7 @@ public class ShowController extends BaseController {
         TableColumn<Word, String> categoryColumn = new TableColumn<>("Category");
         categoryColumn.setCellValueFactory(new PropertyValueFactory<>("category"));
 
+        // Kolommen toevoegen
         tableView.getColumns().addAll(wordColumn, meaningColumn, noteColumn, editColumn, deleteColumn, categoryColumn);
 
         // Controleer of de gebruiker is ingelogd
@@ -139,6 +144,7 @@ public class ShowController extends BaseController {
 
         // Voeg de data toe aan de TableView
         tableView.setItems(wordsList);
+
     }
 
 }

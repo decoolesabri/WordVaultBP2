@@ -11,6 +11,7 @@ public abstract class BaseController {
 
     public BaseController (Database db) {
 
+        // Zorgen voor de connectie tussen de database en controllers
         this.db = db;
         try {
             this.stmt = this.db.getConn().createStatement();

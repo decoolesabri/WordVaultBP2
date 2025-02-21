@@ -34,7 +34,4 @@ public class Application extends javafx.application.Application {
     }
 }
 
-// Nieuwe positie geven van panes
-// Namen van de onderdelen goed maken, engels/nederlands
-// Comments toevoegen
 // test van controllers en CRUD maken

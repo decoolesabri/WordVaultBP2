@@ -14,11 +14,14 @@ public class Word {
     private final StringProperty category;
 
     public Word(int id, String word, String meaning, String note, String category) {
+
+        // Onderdelen van het word object
         this.id = new SimpleIntegerProperty(id);
         this.word = new SimpleStringProperty(word);
         this.meaning = new SimpleStringProperty(meaning);
         this.note = new SimpleStringProperty(note);
         this.category = new SimpleStringProperty(category);
+
     }
 
     public int getId() {

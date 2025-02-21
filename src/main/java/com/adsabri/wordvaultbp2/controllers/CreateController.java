@@ -2,7 +2,6 @@ package com.adsabri.wordvaultbp2.controllers;
 
 import com.adsabri.wordvaultbp2.Database;
 import com.adsabri.wordvaultbp2.UserSession;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,6 +12,7 @@ public class CreateController extends BaseController {
         super(db);
     }
 
+    // Bestaat de user?
     public boolean userExists(int userId) {
         try {
             String query = "SELECT id FROM user WHERE id = ?";
@@ -20,13 +20,14 @@ public class CreateController extends BaseController {
             stmt.setInt(1, userId);
 
             ResultSet rs = stmt.executeQuery();
-            return rs.next(); // Retourneert true als de gebruiker bestaat
+            return rs.next();
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }
     }
 
+    // Opslaan van een woord met bijbehorende data
     public int save (String word, String meaning, String note, String categoryName) {
         // Haal het loggedInUserId op uit de UserSession
         int loggedInUserId = UserSession.getLoggedInUserId();
@@ -85,6 +86,7 @@ public class CreateController extends BaseController {
         return loggedInUserId;
     }
 
+    // Category id zoeken
     private int getCategoryId(String categoryName) {
         try {
             String query = "SELECT id FROM category WHERE name = ?";
@@ -100,6 +102,5 @@ public class CreateController extends BaseController {
         }
         return -1; // Geeft -1 terug als de categorie niet bestaat
     }
-
 
 }

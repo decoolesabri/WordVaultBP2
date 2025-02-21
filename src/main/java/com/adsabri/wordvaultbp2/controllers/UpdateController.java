@@ -2,7 +2,6 @@ package com.adsabri.wordvaultbp2.controllers;
 
 import com.adsabri.wordvaultbp2.Database;
 import com.adsabri.wordvaultbp2.models.Word;
-
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
@@ -15,6 +14,7 @@ public class UpdateController extends BaseController {
     public void updateWord(Word word, int categoryId) {
 
         try {
+            // Woord bijwerken in de database
             String sql = "UPDATE word SET word = ?, meaning = ?, note = ? WHERE id = ?";
             try (PreparedStatement stmt = db.getConn().prepareStatement(sql)) {
                 stmt.setString(1, word.getWord());
@@ -24,6 +24,7 @@ public class UpdateController extends BaseController {
                 stmt.executeUpdate();
             }
 
+            // Categorie bijwerken in database
             sql = "UPDATE word_category SET category_id = ? WHERE word_id = ?";
             try (PreparedStatement stmt = db.getConn().prepareStatement(sql)) {
                 stmt.setInt(1, categoryId);  // Nieuwe category_id

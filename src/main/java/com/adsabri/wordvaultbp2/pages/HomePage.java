@@ -60,7 +60,7 @@ public class HomePage {
 
     private void setupLayout () {
 
-        // init's
+        // Init's
         topPane = new VBox();
         leftPane = new VBox();
         rightPane = new VBox();
@@ -82,7 +82,7 @@ public class HomePage {
         listButton = new Button("View word list");
         logoutButton = new Button("Logout");
 
-        // id's geven aan de onderdelen
+        // Id's geven aan de onderdelen
         root.setId("rootPane");
         topPane.setId("topPane");
         leftPane.setId("leftPane");
@@ -96,13 +96,13 @@ public class HomePage {
         listButton.setId("rightButton");
         logoutButton.setId("bottomButton");
 
-        // sizes
+        // Sizes
         topPane.setPrefSize(430, 100);
         leftPane.setPrefSize(300, 500);
         rightPane.setPrefSize(600, 500);
         bottomPane.setPrefSize(125, 75);
 
-        // plaats panes
+        // Plaats panes
         topPane.setLayoutX(500);
         topPane.setLayoutY(40);
 
@@ -130,31 +130,37 @@ public class HomePage {
     private void setOnAction () {
 
         addButton.setOnAction(event -> {
+
+            // AddPage instellen met bijbehorende controllers
             Stage addStage = new Stage();
             Database db = new Database();
             CreateController cc = new CreateController(db);
-            UpdateController uc = new UpdateController(db);  // Je maakt nu ook een instantie van UpdateController
+            UpdateController uc = new UpdateController(db);
             LoginController lc = new LoginController(db);
             CategoryController catc = new CategoryController(db);
 
-            // Maak de AddPage aan met zowel CreateController als UpdateController, en geef null door voor een nieuw woord
             new AddPage(addStage, cc, uc, lc, catc, null);
             addStage.show();
+
         });
 
         listButton.setOnAction(event -> {
+
+            // ListPage instellen
             ListPage listPage = new ListPage(homeStage);
             homeStage.setScene(listPage.getScene());
+
         });
 
         logoutButton.setOnAction(event -> {
-            // Maak de LoginController aan en geef deze door aan de LoginPage constructor
+
+            // LoginController aanmaken en doorgeven aan de LoginPage
             Database db = new Database();
             LoginController loginController = new LoginController(db);
 
-            // Geef de juiste constructor parameters door
             LoginPage loginPage = new LoginPage(homeStage, loginController);
             homeStage.setScene(loginPage.getScene());
+
         });
 
     }

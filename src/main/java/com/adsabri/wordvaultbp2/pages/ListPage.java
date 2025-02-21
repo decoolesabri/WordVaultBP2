@@ -52,49 +52,48 @@ public class ListPage {
 
     private void setupLayout () {
 
-        // init's
+        // Init's
         topPane = new VBox();
         listPane = new VBox();
         buttonPane = new HBox();
+        buttonPane.setSpacing(1000);
 
         label = new Label("Current wordlist");
 
         homeButton = new Button("Home");
         addButton = new Button("Add");
 
-        // TableView init
+        // TableView init, voor de woordenlijst
         tableView = new TableView<>();
         tableView.setPrefSize(850, 425);
 
+        // Tabel vullen met data uit de database
         Database db = new Database();
         ShowController sc = new ShowController(db);
         sc.show(tableView);
 
-        // id's geven aan de onderdelen
+        // Id's geven aan de onderdelen
         root.setId("rootPane");
         topPane.setId("topPane");
         listPane.setId("listPane");
         buttonPane.setId("buttonPane");
-        buttonPane.setSpacing(1000);
-
         label.setId("label");
-
         homeButton.setId("homeButton");
         addButton.setId("addButton");
 
-        // sizes
+        // Sizes
         topPane.setPrefSize(300, 100);
         listPane.setPrefSize(850, 425);
         buttonPane.setPrefSize(1400, 50);
 
-        // plaats panes
-        topPane.setLayoutX(550);
+        // Plaats panes
+        topPane.setLayoutX(620);
         topPane.setLayoutY(40);
 
-        listPane.setLayoutX(275);
+        listPane.setLayoutX(340);
         listPane.setLayoutY(200);
 
-        buttonPane.setLayoutX(0);
+        buttonPane.setLayoutX(63);
         buttonPane.setLayoutY(650);
 
         // set on action koppelen
@@ -113,6 +112,7 @@ public class ListPage {
 
         addButton.setOnAction(e -> {
 
+            // AddPage instellen met bijbehorende controllers
             Stage addStage = new Stage();
             Database db = new Database();
             CreateController cc = new CreateController(db);

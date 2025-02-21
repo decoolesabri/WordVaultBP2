@@ -12,7 +12,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -41,8 +40,10 @@ public class LoginPage {
 
     public LoginPage (Stage loginStage, LoginController loginController) {
 
+        // Logincontroller instellen
         this.loginController = loginController;
 
+        // Scherm groottes krijgen
         Rectangle2D primaryScreenBounds = Screen.getPrimary().getBounds();
         this.screenWidth = primaryScreenBounds.getWidth();
         this.screenHeight = primaryScreenBounds.getHeight();
@@ -63,7 +64,7 @@ public class LoginPage {
 
     private void setupLayout () {
 
-        // init's
+        // Init's
         loginPane = new VBox();
         textPane = new VBox();
 
@@ -85,12 +86,13 @@ public class LoginPage {
 
         loginButton = new Button("Login");
 
+        // Animatie instellen voor de loginPane
         FadeTransition fade = new FadeTransition(Duration.seconds(1), loginPane);
         fade.setFromValue(0);
         fade.setToValue(1);
         fade.play();
 
-        // id's geven aan de onderdelen
+        // Id's geven aan de onderdelen
         root.setId("rootPane");
         loginPane.setId("loginPane");
         textPane.setId("textPane");
@@ -105,7 +107,7 @@ public class LoginPage {
 
         loginButton.setId("loginButton");
 
-        // sizes
+        // Sizes
         loginPane.setPrefSize(400, 470);
         textPane.setPrefSize(510, 200);
 
@@ -115,7 +117,7 @@ public class LoginPage {
         textUsername.setMaxWidth(300);
         textPassword.setMaxWidth(300);
 
-        // plaats panes
+        // Plaats panes
         loginPane.setLayoutX(900);
         loginPane.setLayoutY(150);
         textPane.setLayoutX(200);
@@ -165,6 +167,7 @@ public class LoginPage {
         Label successLabel = new Label("Login succesvol!");
         successLabel.setId("successLabel");
 
+        // Button om door te gaan naar de HomePage
         Button continueButton = new Button("Doorgaan");
         continueButton.setId("continueButton");
 
