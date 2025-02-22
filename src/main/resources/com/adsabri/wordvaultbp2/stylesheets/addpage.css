@@ -21,11 +21,11 @@
 }
 
 #savePane {
-    -fx-background-color: transparant;
+    -fx-background-color: transparent;
 }
 
 #buttonPane {
-    -fx-background-color: transparant;
+    -fx-background-color: transparent;
     -fx-alignment: center;
 }
 

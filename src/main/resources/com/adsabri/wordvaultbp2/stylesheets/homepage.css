@@ -15,7 +15,6 @@
     -fx-border-radius: 20px;
     -fx-background-radius: 20px;
     -fx-padding: 20px;
-    /*-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 15, 0.5, 5, 10);*/
 }
 
 #rightPane {
@@ -29,7 +28,7 @@
 }
 
 #bottomPane {
-    -fx-background-color: transparant;
+    -fx-background-color: transparent;
     -fx-alignment: center;
     -fx-max-width: infinity;
     -fx-max-height: infinity;

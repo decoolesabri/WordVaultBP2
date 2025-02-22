@@ -17,7 +17,7 @@
 }
 
 #buttonPane {
-    -fx-background-color: transparant;
+    -fx-background-color: transparent;
     -fx-alignment: center;
     -fx-max-width: infinity;
     -fx-max-height: infinity;
