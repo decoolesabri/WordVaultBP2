@@ -20,9 +20,6 @@ public class Application extends javafx.application.Application {
         LoginController lc = new LoginController(db);
 
         LoginPage loginPage = new LoginPage(stage, lc);
-//        HomePage homePage = new HomePage(stage);
-//        AddPage addPage = new AddPage(stage, cc);
-//        ListPage listPage = new ListPage(stage);
 
         stage.setResizable(false);
         stage.setTitle("Hello!");
