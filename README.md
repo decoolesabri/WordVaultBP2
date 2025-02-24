@@ -23,17 +23,11 @@ This application is designed for Spanish learners, whether college students or s
 1. clone this project
 2. install Java (JDK)
 3. set up MySQL database
-   - download an install MySQL
-   - create a new database
-   - ?
+   - download and install MySQL
+   - import the provided database (brightspace)
 4. open IntelliJ IDEA
 5. load the cloned project
 6. find the Application.java and run the application
-
-## Configuration
-Before running the application, you need to set up the database connection so the app can store and retrieve words correctly.
-
-?
 
 ## Usage Guide
 When you open the application, you will first see the **login page**. Here, you can create an account by choosing a **username and password**. If you already have an account, simply enter your credentials to log in.
