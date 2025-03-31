@@ -6,6 +6,7 @@ import java.sql.Statement;
 
 public abstract class BaseController {
 
+    //yes
     protected Database db;
     protected Statement stmt;
 
